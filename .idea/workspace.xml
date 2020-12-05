@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/assets/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/assets/variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/components/Logo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/components/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/components/VuetifyLogo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/jest.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/layouts/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/layouts/default.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/layouts/error.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/middleware/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/nuxt.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/pages/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/pages/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/pages/inspire.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/plugins/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/static/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/static/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/static/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/static/v.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/static/vuetify-logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/store/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/test/Logo.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/frontend" />
+  </component>
+  <component name="ProjectId" id="1lEgYFK5linwJOEF2iIMFqa5fST" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="" />
+      <created>1607167713542</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607167713542</updated>
+      <workItem from="1607167716947" duration="333000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
