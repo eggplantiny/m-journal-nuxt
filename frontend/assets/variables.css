@@ -1,0 +1,10 @@
+.v-timeline-item__body .v-card__text, .v-timeline-item__body .v-card__title, .v-timeline-item__body .v-card {
+  transition: background-color 150ms;
+  border-radius: 24px;
+}
+
+.v-timeline-item__inner-dot {
+  transition: width 150ms, height 150ms, margin 150ms;
+}
+
+/*# sourceMappingURL=variables.css.map */

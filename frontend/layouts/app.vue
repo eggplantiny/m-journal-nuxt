@@ -4,6 +4,18 @@
       <v-container>
         <nuxt />
       </v-container>
+      <v-btn
+        fab
+        absolute
+        bottom
+        right
+        dark
+        color="indigo lighten-1"
+      >
+        <v-icon>
+          mdi-plus
+        </v-icon>
+      </v-btn>
     </v-main>
   </v-app>
 </template>
