@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main>
+    <v-main class="main">
       <v-container>
         <nuxt />
       </v-container>
@@ -10,11 +10,12 @@
 
 <script>
 export default {
-  name: 'DefaultLayout',
-  layout: 'app',
-  data () {
-    return {
-    }
-  }
+  name: 'AppLayout'
 }
 </script>
+
+<style scoped>
+.main {
+  max-width: 800px;
+}
+</style>

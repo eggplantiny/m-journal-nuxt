@@ -2,3 +2,10 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+
+.v-card__text, .v-card__title, .v-card {
+  transition: color 300ms, background-color 300ms;
+}
+
+$$timeline-divider-width: 40px;
