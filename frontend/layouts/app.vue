@@ -4,18 +4,6 @@
       <v-container>
         <nuxt />
       </v-container>
-      <v-btn
-        fab
-        absolute
-        bottom
-        right
-        dark
-        color="indigo lighten-1"
-      >
-        <v-icon>
-          mdi-plus
-        </v-icon>
-      </v-btn>
     </v-main>
   </v-app>
 </template>
@@ -28,6 +16,8 @@ export default {
 
 <style scoped>
 .main {
-  max-width: 800px;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
 }
 </style>

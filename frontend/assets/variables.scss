@@ -5,8 +5,18 @@
 
 .v-timeline-item__body {
   .v-card__text, .v-card__title, .v-card {
+    font-family: 'Do Hyeon', sans-serif;
+
     transition: background-color 150ms;
     border-radius: 24px;
+
+    .v-btn__content {
+      font-family: 'Jua', sans-serif;
+      font-size: 24px;
+    }
+  }
+  .v-card__text {
+    word-break: keep-all;
   }
 }
 
@@ -17,3 +27,6 @@
 $timeline-divider-width: 40px;
 $timeline-dot-regular-size: 24px;
 
+$grid-breakpoints: (
+  'sm': 640px,
+);
