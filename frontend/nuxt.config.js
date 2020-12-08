@@ -72,6 +72,12 @@ export default {
     }
   },
 
+  vuetifyDialog: {
+    property: '$dialog',
+    confirm: {}
+    // ...
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   }
