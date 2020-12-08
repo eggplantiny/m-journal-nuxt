@@ -30,16 +30,42 @@
               >
                 <template v-if="item.type === 'button'">
                   <v-card-title class="pa-0">
-                    <v-btn
-                      block
-                      text
-                      rounded
-                      large
-                    >
-                      <v-icon>
-                        mdi-plus
-                      </v-icon>
-                    </v-btn>
+                    <v-dialog width="500">
+                      <template v-slot:activator="{ on }">
+                        <v-btn
+                          block
+                          text
+                          rounded
+                          large
+                          v-on="on"
+                        >
+                          <v-icon>
+                            mdi-plus
+                          </v-icon>
+                        </v-btn>
+                      </template>
+                      <v-card flat>
+                        <v-card-title>
+                          오늘은 뭘 하셨나요? 😄
+                        </v-card-title>
+                        <v-card-text class="px-2 py-0">
+                          <v-text-field
+                            v-model="input.title"
+                            placeholder="운동하기 💪"
+                            color="primary"
+                            hide-details
+                            rounded
+                            outlined
+                          />
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-spacer />
+                          <v-btn color="primary" text>
+                            다음
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
                   </v-card-title>
                 </template>
                 <template v-else>
@@ -91,6 +117,10 @@ export default {
       date,
       items: [
         {
+          type: 'button',
+          color: 'red lighten-1'
+        },
+        {
           startTime: '2020-12-05 17:05',
           title: '운동 다녀오기',
           description: '오늘은 등운동 가야 했지만 못가고 그냥 겉기만 했네 ㅎㅎㅎ',
@@ -113,12 +143,13 @@ export default {
           title: '개발 💻',
           description: 'm-journal 기초 레이아웃 잡기\n화면 테스트 진행',
           color: 'purple lighten-1'
-        },
-        {
-          type: 'button',
-          color: 'red lighten-1'
         }
-      ]
+      ],
+      input: {
+        title: '',
+        description: '',
+        startTime: moment().startOf('hour')
+      }
     }
   }
 }
