@@ -13,92 +13,115 @@
         clipped
         reverse
       >
-        <template v-for="(item, index) in items">
-          <v-hover
-            v-slot:default="{ hover }"
-            :key="`${index}-timeline-item`"
-          >
-            <v-timeline-item
-              :color="item.color"
-              :small="!hover"
+        <v-slide-x-transition group>
+          <template v-for="(item, index) in items">
+            <v-hover
+              v-slot:default="{ hover }"
+              :key="`${index}-timeline-item`"
             >
-              <v-card
-                flat
-                :elevation="hover ? 3 : 0"
-                :color="hover ? item.color : 'white'"
-                :dark="hover"
+              <v-timeline-item
+                :color="item.color"
+                :small="!hover"
               >
-                <template v-if="item.type === 'button'">
-                  <v-card-title class="pa-0">
-                    <v-dialog width="500">
-                      <template v-slot:activator="{ on }">
-                        <v-btn
-                          block
-                          text
-                          rounded
-                          large
-                          v-on="on"
-                        >
-                          <v-icon>
-                            mdi-plus
-                          </v-icon>
-                        </v-btn>
-                      </template>
-                      <v-card flat>
-                        <v-card-title>
-                          오늘은 뭘 하셨나요? 😄
-                        </v-card-title>
-                        <v-card-text class="px-2 py-0">
-                          <v-text-field
-                            v-model="input.title"
-                            placeholder="운동하기 💪"
-                            color="primary"
-                            hide-details
+                <v-card
+                  flat
+                  :elevation="hover ? 3 : 0"
+                  :color="hover ? item.color : 'white'"
+                  :dark="hover"
+                >
+                  <template v-if="item.type === 'button'">
+                    <v-card-title class="pa-0">
+                      <v-dialog
+                        width="500"
+                        v-model="input.show"
+                      >
+                        <template v-slot:activator="{ on }">
+                          <v-btn
+                            block
+                            text
                             rounded
-                            outlined
-                          />
-                        </v-card-text>
-                        <v-card-actions>
-                          <v-spacer />
-                          <v-btn color="primary" text>
-                            다음
-                          </v-btn>
-                        </v-card-actions>
-                      </v-card>
-                    </v-dialog>
-                  </v-card-title>
-                </template>
-                <template v-else>
-                  <v-row no-gutters>
-                    <v-col cols="10">
-                      <v-card-title>
-                        {{ item.title }}
-                      </v-card-title>
-                      <v-card-subtitle class="py-0">
-                        {{ item.startTime }}
-                      </v-card-subtitle>
-                      <v-card-text>
-                        {{ item.description }}
-                      </v-card-text>
-                    </v-col>
-                    <v-col cols="2" align-self="end">
-                      <v-fab-transition>
-                        <v-card-actions v-show="hover">
-                          <v-spacer />
-                          <v-btn icon color="red">
+                            large
+                            v-on="on"
+                          >
                             <v-icon>
-                              mdi-delete
+                              mdi-plus
                             </v-icon>
                           </v-btn>
-                        </v-card-actions>
-                      </v-fab-transition>
-                    </v-col>
-                  </v-row>
-                </template>
-              </v-card>
-            </v-timeline-item>
-          </v-hover>
-        </template>
+                        </template>
+                        <v-card flat rounded>
+                          <v-card-title>
+                            기록하기
+                          </v-card-title>
+                          <v-card-text>
+                            <v-text-field
+                              v-model="input.title"
+                              label="이번엔 어떤일을 하셨나요? 😯"
+                              color="primary"
+                              hide-details
+                              outlined
+                            />
+                            <v-textarea
+                              v-model="input.description"
+                              class="mt-4"
+                              label="조금 더 자세히 말해줄래요? 😄"
+                              color="primary"
+                              rows="3"
+                              hide-details
+                              outlined
+                              auto-grow
+                            />
+                            <b-timepicker
+                              v-model="input.startTime"
+                              class="mt-4"
+                              placeholder="몇시에 하셨나요?"
+                            />
+                          </v-card-text>
+                          <v-card-actions>
+                            <v-spacer />
+                            <v-btn
+                              color="primary"
+                              text
+                              @click="submitItem"
+                            >
+                              입력
+                            </v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+                    </v-card-title>
+                  </template>
+                  <template v-else>
+                    <v-row no-gutters>
+                      <v-col cols="10">
+                        <v-card-title>
+                          {{ item.title }}
+                        </v-card-title>
+                        <v-card-subtitle class="py-0">
+                          {{ formatTime(item.startTime) }}
+                        </v-card-subtitle>
+                        <v-card-text>
+                          {{ item.description }}
+                        </v-card-text>
+                      </v-col>
+                      <v-col cols="2" align-self="end">
+                        <v-fab-transition>
+                          <v-card-actions v-show="hover">
+                            <v-spacer />
+                            <v-btn icon color="red" @click="deleteItem(index)">
+                              <v-icon>
+                                mdi-delete
+                              </v-icon>
+                            </v-btn>
+                          </v-card-actions>
+                        </v-fab-transition>
+                      </v-col>
+                    </v-row>
+                  </template>
+                </v-card>
+              </v-timeline-item>
+            </v-hover>
+          </template>
+        </v-slide-x-transition>
       </v-timeline>
     </v-col>
   </v-row>
@@ -123,7 +146,7 @@ export default {
         {
           startTime: '2020-12-05 17:05',
           title: '운동 다녀오기',
-          description: '오늘은 등운동 가야 했지만 못가고 그냥 겉기만 했네 ㅎㅎㅎ',
+          description: '오늘은 등운동 가야 했지만 못가고 그냥 걷기만 했네 ㅎㅎㅎ',
           color: 'indigo lighten-1'
         },
         {
@@ -148,8 +171,31 @@ export default {
       input: {
         title: '',
         description: '',
-        startTime: moment().startOf('hour')
+        startTime: moment().startOf('hour').toDate(),
+        show: false
       }
+    }
+  },
+  methods: {
+    formatTime (value) {
+      return moment(value).format('HH시 mm분')
+    },
+    submitItem () {
+      const { title, description, startTime } = this.input
+
+      this.items.push({
+        title,
+        description,
+        startTime
+      })
+
+      this.input.show = false
+
+      this.input.title = ''
+      this.input.description = ''
+    },
+    deleteItem (index) {
+      this.items.splice(index, 1)
     }
   }
 }

@@ -64,3 +64,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+frontend/node_modules
+frontend/dist
+frontend/.nuxt

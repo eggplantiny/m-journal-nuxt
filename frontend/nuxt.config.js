@@ -27,6 +27,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     '@/plugins/v-calendar.js'
+    // '@/plugins/buefy.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -45,7 +46,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['nuxt-buefy', { css: true, materialDesignIcons: true }]
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -67,6 +69,9 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        },
+        light: {
+          primary: colors.indigo.lighten1
         }
       }
     }
