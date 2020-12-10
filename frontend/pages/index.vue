@@ -13,11 +13,14 @@
         clipped
         reverse
       >
-        <v-slide-x-transition group>
+        <v-slide-x-transition
+          group
+          hide-on-leave
+        >
           <template v-for="(item, index) in items">
             <v-hover
               v-slot:default="{ hover }"
-              :key="`${index}-timeline-item`"
+              :key="index"
             >
               <v-timeline-item
                 :color="item.color"
@@ -75,6 +78,24 @@
                               class="mt-4"
                               placeholder="몇시에 하셨나요?"
                             />
+
+                            <div class="mt-4 text-h7">
+                              색깔
+                            </div>
+                            <v-radio-group
+                              v-model="input.color"
+                              class="my-0"
+                              row
+                            >
+                              <template v-for="(color, colorIndex) in colors">
+                                <v-radio
+                                  :key="`${colorIndex}-color`"
+                                  :label="color.text"
+                                  :value="color.value"
+                                  :color="color.value"
+                                />
+                              </template>
+                            </v-radio-group>
                           </v-card-text>
                           <v-card-actions>
                             <v-spacer />
@@ -168,10 +189,37 @@ export default {
           color: 'purple lighten-1'
         }
       ],
+      colors: [{
+        text: '보라',
+        value: 'purple lighten-1'
+      }, {
+        text: '파랑',
+        value: 'blue lighten-1'
+      }, {
+        text: '빨강',
+        value: 'red lighten-1'
+      }, {
+        text: '노랑',
+        value: 'yellow lighten-1'
+      }, {
+        text: '인디고',
+        value: 'indigo lighten-2'
+      }, {
+        text: '초록',
+        value: 'green lighten-1'
+      }, {
+        text: '회색',
+        value: 'grey lighten-1'
+      }, {
+        text: '검정',
+        value: 'black lighten-1'
+      }
+      ],
       input: {
         title: '',
         description: '',
         startTime: moment().startOf('hour').toDate(),
+        color: 0,
         show: false
       }
     }
@@ -181,12 +229,13 @@ export default {
       return moment(value).format('HH시 mm분')
     },
     submitItem () {
-      const { title, description, startTime } = this.input
+      const { title, description, startTime, color } = this.input
 
       this.items.push({
         title,
         description,
-        startTime
+        startTime,
+        color
       })
 
       this.input.show = false
