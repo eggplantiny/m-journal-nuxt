@@ -5,6 +5,7 @@
         v-model="date"
         color="indigo"
         is-expanded
+        @update:from-page="updateCalendar"
       />
     </v-col>
     <v-col cols="12" sm="7" class="py-0">
@@ -17,7 +18,9 @@
           group
           hide-on-leave
         >
-          <template v-for="(item, index) in items">
+          <template
+            v-for="(item, index) in targetItems"
+          >
             <v-hover
               v-slot:default="{ hover }"
               :key="index"
@@ -35,8 +38,8 @@
                   <template v-if="item.type === 'button'">
                     <v-card-title class="pa-0">
                       <v-dialog
-                        width="500"
                         v-model="input.show"
+                        width="500"
                       >
                         <template v-slot:activator="{ on }">
                           <v-btn
@@ -189,31 +192,39 @@ export default {
           color: 'purple lighten-1'
         }
       ],
-      colors: [{
-        text: '보라',
-        value: 'purple lighten-1'
-      }, {
-        text: '파랑',
-        value: 'blue lighten-1'
-      }, {
-        text: '빨강',
-        value: 'red lighten-1'
-      }, {
-        text: '노랑',
-        value: 'yellow lighten-1'
-      }, {
-        text: '인디고',
-        value: 'indigo lighten-2'
-      }, {
-        text: '초록',
-        value: 'green lighten-1'
-      }, {
-        text: '회색',
-        value: 'grey lighten-1'
-      }, {
-        text: '검정',
-        value: 'black lighten-1'
-      }
+      colors: [
+        {
+          text: '보라',
+          value: 'purple lighten-1'
+        },
+        {
+          text: '파랑',
+          value: 'blue lighten-1'
+        },
+        {
+          text: '빨강',
+          value: 'red lighten-1'
+        },
+        {
+          text: '노랑',
+          value: 'yellow lighten-1'
+        },
+        {
+          text: '인디고',
+          value: 'indigo lighten-2'
+        },
+        {
+          text: '초록',
+          value: 'green lighten-1'
+        },
+        {
+          text: '회색',
+          value: 'grey lighten-1'
+        },
+        {
+          text: '검정',
+          value: 'black lighten-1'
+        }
       ],
       input: {
         title: '',
@@ -224,17 +235,24 @@ export default {
       }
     }
   },
+  computed: {
+    targetItems () {
+      const { items, date } = this
+      return items.filter(item => moment(item.startTime).isSame(date, 'month') || item.type === 'button')
+    }
+  },
   methods: {
     formatTime (value) {
       return moment(value).format('HH시 mm분')
     },
     submitItem () {
       const { title, description, startTime, color } = this.input
+      const date = this.date
 
       this.items.push({
         title,
         description,
-        startTime,
+        startTime: `${moment(date).format('YYYYY-MM-DD')} ${moment(startTime).format('hh:mm:ss')}`,
         color
       })
 
@@ -245,6 +263,9 @@ export default {
     },
     deleteItem (index) {
       this.items.splice(index, 1)
+    },
+    updateCalendar ({ year, month }) {
+      this.date = moment(this.date).year(year).month(month - 1).toDate()
     }
   }
 }
