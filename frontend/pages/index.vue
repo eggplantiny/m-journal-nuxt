@@ -131,7 +131,7 @@
                         <v-fab-transition>
                           <v-card-actions v-show="hover">
                             <v-spacer />
-                            <v-btn icon color="red" @click="deleteItem(index)">
+                            <v-btn icon color="red" @click="deleteItem(item)">
                               <v-icon>
                                 mdi-delete
                               </v-icon>
@@ -154,6 +154,18 @@
 <script>
 import moment from 'moment'
 
+function makeid (size) {
+  let result = ''
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  const charactersLength = characters.length
+
+  for (let c = 0; c < size; c++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+  }
+
+  return result
+}
+
 export default {
   name: 'Root',
   layout: 'app',
@@ -168,25 +180,33 @@ export default {
           color: 'red lighten-1'
         },
         {
+          id: 0,
           startTime: '2020-12-05 17:05',
+          dateString: '2020-12-05',
           title: '운동 다녀오기',
           description: '오늘은 등운동 가야 했지만 못가고 그냥 걷기만 했네 ㅎㅎㅎ',
           color: 'indigo lighten-1'
         },
         {
+          id: 1,
           startTime: '2020-12-05 18:12',
+          dateString: '2020-12-05',
           title: '저녁밥',
           description: '리앙 크리스피롤 먹음.',
           color: 'green lighten-1'
         },
         {
+          id: 2,
           startTime: '2020-12-05 19:25',
+          dateString: '2020-12-05',
           title: '집청소',
           description: '',
           color: 'blue lighten-1'
         },
         {
+          id: 3,
           startTime: '2020-12-05 19:25',
+          dateString: '2020-12-05',
           title: '개발 💻',
           description: 'm-journal 기초 레이아웃 잡기\n화면 테스트 진행',
           color: 'purple lighten-1'
@@ -238,7 +258,8 @@ export default {
   computed: {
     targetItems () {
       const { items, date } = this
-      return items.filter(item => moment(item.startTime).isSame(date, 'month') || item.type === 'button')
+      const dateString = moment(date).format('YYYY-MM-DD')
+      return items.filter(item => moment(item.startTime).format('YYYY-MM-DD') === dateString || item.type === 'button')
     }
   },
   methods: {
@@ -248,11 +269,14 @@ export default {
     submitItem () {
       const { title, description, startTime, color } = this.input
       const date = this.date
+      const id = makeid(8)
 
       this.items.push({
+        id,
         title,
         description,
         startTime: `${moment(date).format('YYYYY-MM-DD')} ${moment(startTime).format('hh:mm:ss')}`,
+        dateString: moment(date).format('YYYY-MM-DD'),
         color
       })
 
@@ -261,8 +285,11 @@ export default {
       this.input.title = ''
       this.input.description = ''
     },
-    deleteItem (index) {
-      this.items.splice(index, 1)
+    deleteItem (item) {
+      const index = this.items.findIndex(targetItem => targetItem.id === item.id)
+      if (index > -1) {
+        this.items.splice(index, 1)
+      }
     },
     updateCalendar ({ year, month }) {
       this.date = moment(this.date).year(year).month(month - 1).toDate()
