@@ -167,7 +167,7 @@ function makeid (size) {
 }
 
 export default {
-  name: 'Root',
+  name: 'UserCalendar',
   layout: 'app',
   data () {
     const date = moment().toDate()
