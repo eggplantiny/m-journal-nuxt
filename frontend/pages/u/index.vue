@@ -1,10 +1,14 @@
 <template>
-
+  <v-row>
+    <v-col>
+      Hello User Index
+    </v-col>
+  </v-row>
 </template>
 
 <script>
 export default {
-name: "index"
+  name: 'UserIndex'
 }
 </script>
 

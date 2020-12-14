@@ -131,7 +131,11 @@
                         <v-fab-transition>
                           <v-card-actions v-show="hover">
                             <v-spacer />
-                            <v-btn icon color="red" @click="deleteItem(item)">
+                            <v-btn
+                              icon
+                              color="red"
+                              @click="deleteItem(item)"
+                            >
                               <v-icon>
                                 mdi-delete
                               </v-icon>
@@ -250,7 +254,7 @@ export default {
         title: '',
         description: '',
         startTime: moment().startOf('hour').toDate(),
-        color: 0,
+        color: 'purple lighten-1',
         show: false
       }
     }
@@ -270,8 +274,6 @@ export default {
       const { title, description, startTime, color } = this.input
       const date = this.date
       const id = makeid(8)
-
-      this.$fire.auth()
 
       this.items.push({
         id,
