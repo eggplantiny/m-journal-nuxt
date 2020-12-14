@@ -47,6 +47,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/firebase',
@@ -68,6 +69,10 @@ export default {
     services: {
       auth: true // Just as example. Can be any other service.
     }
+  },
+
+  auth: {
+    // Options
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
