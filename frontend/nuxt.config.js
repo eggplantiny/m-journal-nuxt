@@ -47,7 +47,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/firebase',
@@ -67,12 +66,16 @@ export default {
       measurementId: process.env.MEASUREMENT_ID
     },
     services: {
-      auth: true // Just as example. Can be any other service.
+      //  https://firebase.nuxtjs.org/service-options/auth/
+      auth: {
+        persistence: 'local',
+        initialize: {
+          onAuthStateChangedMutation: 'auth/ON_AUTH_STATE_CHANGED_MUTATION',
+          onAuthStateChangedAction: 'auth/onAuthStateChangedAction',
+          subscribeManually: false
+        }
+      }
     }
-  },
-
-  auth: {
-    // Options
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)

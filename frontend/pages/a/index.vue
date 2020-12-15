@@ -19,13 +19,12 @@
 </template>
 
 <script>
-import firebase from 'firebase'
 
 export default {
   name: 'Authentication',
   methods: {
     async loginWithGoogle () {
-      const provider = new firebase.auth.GoogleAuthProvider()
+      const provider = new this.$fireModule.auth.GoogleAuthProvider()
       try {
         const res = await this.$fire.auth.signInWithPopup(provider)
         console.log(res)
