@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -55,7 +56,8 @@
       <workItem from="1607478105439" duration="9172000" />
       <workItem from="1607591891652" duration="6593000" />
       <workItem from="1607765076582" duration="3690000" />
-      <workItem from="1607930857612" duration="6569000" />
+      <workItem from="1607930857612" duration="6650000" />
+      <workItem from="1608033926242" duration="4079000" />
     </task>
     <servers />
   </component>
