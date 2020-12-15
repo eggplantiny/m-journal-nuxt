@@ -1,21 +1,22 @@
 export const state = () => {
+  return {
+    user: null
+  }
 }
 
 export const mutations = {
   ON_AUTH_STATE_CHANGED_MUTATION (state, { authUser, claims }) {
-    console.log('MUTATION onAuthStateChangedMutation', { authUser, claims })
     if (!authUser) {
-      // claims = null
-      // perform logout operations
-    } else {
-      // Do something with the authUser and the claims object...
+      state.user = null
     }
+    const { displayName, email, emailVerified, photoURL } = authUser
+
+    state.user = { displayName, email, emailVerified, photoURL }
   }
 }
 
 export const actions = {
   onAuthStateChangedAction (ctx, { authUser, claims }) {
-    console.log('ACTION onAuthStateChangedMutation', { authUser, claims })
     if (!authUser) {
       // claims = null
       // perform logout operations
