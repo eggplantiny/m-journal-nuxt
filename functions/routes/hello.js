@@ -12,11 +12,11 @@ const runtimeOptions = {
 
 app.get('/', async (req, res) => {
   const text = req.query.text
-  const result = await store.collection('messages').add({
+  const { id } = await fb.store.collection('messages').add({
     message: text
   })
 
-  return res.json(result)
+  return res.json({ id })
 })
 
 const handler = functions

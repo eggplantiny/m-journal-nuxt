@@ -3,7 +3,8 @@ const cert = require('../skey.json')
 
 function firebaseModuleClosure () {
   admin.initializeApp({
-    credential: admin.credential.cert(cert)
+    credential: admin.credential.cert(cert),
+    storageBucket: 'gs://m-journal.appspot.com'
   })
 
   const bucket = admin.storage().bucket()
