@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/functions/express/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/express/middleware/firebaseAuth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/express/routes/hello.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/express/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/express/utils/response.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/functions/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/routes/hello.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/routes/hello.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/utils/firebaseModule.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/utils/firebaseModule.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/utils/express.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/functions/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +58,7 @@
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions\express" />
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions\utils" />
     </key>
   </component>
@@ -67,7 +77,8 @@
       <workItem from="1607765076582" duration="3690000" />
       <workItem from="1607930857612" duration="6650000" />
       <workItem from="1608033926242" duration="4198000" />
-      <workItem from="1608121673810" duration="4361000" />
+      <workItem from="1608121673810" duration="4456000" />
+      <workItem from="1608199813100" duration="4018000" />
     </task>
     <servers />
   </component>

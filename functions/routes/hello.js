@@ -1,5 +1,5 @@
 const functions = require('firebase-functions')
-const express = require('../utils/express')
+const express = require('../express')
 const firebaseModules = require('../utils/firebaseModule')
 
 const app = express()
