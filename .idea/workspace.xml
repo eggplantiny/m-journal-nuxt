@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/express/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/express/middleware/firebaseAuth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/express/routes/hello.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/express/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/express/utils/response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/run.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/functions/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/routes/hello.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/routes/hello.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/utils/express.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/functions/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,17 +41,19 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
     <property name="vuejs.nuxt.types-notification-shown" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/functions" />
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions\express" />
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions\utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/functions" />
+      <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

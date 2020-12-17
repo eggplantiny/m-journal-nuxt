@@ -2,6 +2,21 @@
   transition: background-color 150ms;
   border-radius: 24px;
 }
+.v-timeline-item__body .v-card__text .v-btn__content, .v-timeline-item__body .v-card__title .v-btn__content, .v-timeline-item__body .v-card .v-btn__content {
+  font-family: "Jua", sans-serif;
+  font-size: 24px;
+}
+.v-timeline-item__body .v-card__text {
+  word-break: keep-all;
+}
+
+.v-card__title {
+  font-family: "Do Hyeon", sans-serif;
+}
+
+.v-card__text {
+  font-family: "Do Hyeon", sans-serif;
+}
 
 .v-timeline-item__inner-dot {
   transition: width 150ms, height 150ms, margin 150ms;
