@@ -67,14 +67,14 @@ export default {
     },
     services: {
       //  https://firebase.nuxtjs.org/service-options/auth/
-      auth: {
-        persistence: 'local',
-        initialize: {
-          onAuthStateChangedMutation: 'auth/ON_AUTH_STATE_CHANGED_MUTATION',
-          onAuthStateChangedAction: 'auth/onAuthStateChangedAction',
-          subscribeManually: false
-        }
-      }
+      // auth: {
+      //   persistence: 'local',
+      //   initialize: {
+      //     onAuthStateChangedMutation: 'auth/ON_AUTH_STATE_CHANGED_MUTATION',
+      //     onAuthStateChangedAction: 'auth/onAuthStateChangedAction',
+      //     subscribeManually: false
+      //   }
+      // }
     }
   },
 

@@ -66,39 +66,47 @@
                               hide-details
                               outlined
                             />
-                            <v-textarea
-                              v-model="input.description"
-                              class="mt-4"
-                              label="조금 더 자세히 말해줄래요? 😄"
-                              color="primary"
-                              rows="3"
-                              hide-details
-                              outlined
-                              auto-grow
-                            />
-                            <b-timepicker
-                              v-model="input.startTime"
-                              class="mt-4"
-                              placeholder="몇시에 하셨나요?"
-                            />
-
-                            <div class="mt-4 text-h7">
-                              색깔
-                            </div>
-                            <v-radio-group
-                              v-model="input.color"
-                              class="my-0"
-                              row
-                            >
-                              <template v-for="(color, colorIndex) in colors">
-                                <v-radio
-                                  :key="`${colorIndex}-color`"
-                                  :label="color.text"
-                                  :value="color.value"
-                                  :color="color.value"
-                                />
-                              </template>
-                            </v-radio-group>
+                            <v-expansion-panels flat>
+                              <v-expansion-panel>
+                                <v-expansion-panel-header class="px-0">
+                                  자세히 기록하기
+                                </v-expansion-panel-header>
+                                <v-expansion-panel-content class="px-0">
+                                  <v-textarea
+                                    v-model="input.description"
+                                    class="mt-4"
+                                    label="조금 더 자세히 말해줄래요? 😄"
+                                    color="primary"
+                                    rows="3"
+                                    hide-details
+                                    outlined
+                                    auto-grow
+                                  />
+                                  <b-timepicker
+                                    v-model="input.startTime"
+                                    class="mt-4"
+                                    placeholder="몇시에 하셨나요?"
+                                  />
+                                  <div class="mt-4 text-h7">
+                                    색깔
+                                  </div>
+                                  <v-radio-group
+                                    v-model="input.color"
+                                    class="my-0"
+                                    row
+                                  >
+                                    <template v-for="(color, colorIndex) in colors">
+                                      <v-radio
+                                        :key="`${colorIndex}-color`"
+                                        :label="color.text"
+                                        :value="color.value"
+                                        :color="color.value"
+                                      />
+                                    </template>
+                                  </v-radio-group>
+                                </v-expansion-panel-content>
+                              </v-expansion-panel>
+                            </v-expansion-panels>
                           </v-card-text>
                           <v-card-actions>
                             <v-spacer />
@@ -252,7 +260,8 @@ export default {
         startTime: moment().startOf('hour').toDate(),
         color: 0,
         show: false
-      }
+      },
+      showDetail: false
     }
   },
   computed: {
@@ -270,8 +279,6 @@ export default {
       const { title, description, startTime, color } = this.input
       const date = this.date
       const id = makeid(8)
-
-      this.$fire.auth()
 
       this.items.push({
         id,
