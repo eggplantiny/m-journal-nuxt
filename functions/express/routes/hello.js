@@ -4,7 +4,7 @@ const router = express.Router()
 const response = require('../utils/response')
 const validateFirebaseIdToken = require('../middleware/firebaseAuth')
 
-router.get('/Hello',
+router.get('/World',
   async (req, res) => {
   return response.success(res, { hello: 'Hello World!' })
 })
