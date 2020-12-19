@@ -9,12 +9,14 @@ function firebaseModuleClosure () {
 
   const bucket = admin.storage().bucket()
   const store = admin.firestore()
+  const auth = admin.auth()
   const increment = admin.firestore.FieldValue.increment
 
   return () => {
     return {
       bucket,
       store,
+      auth,
       increment
     }
   }

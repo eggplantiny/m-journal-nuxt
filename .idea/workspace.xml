@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/middleware/firebaseAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/middleware/firebaseAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/routes/hello.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/routes/hello.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/utils/firebaseModule.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/utils/firebaseModule.js" afterDir="false" />
+>>>>>>> 69acf765ce33643354110e08889f72c7af73226d
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

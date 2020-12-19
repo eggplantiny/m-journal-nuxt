@@ -16,8 +16,7 @@ function generateApp () {
   // app.use(validateFirebaseIdToken)
 
   routes.forEach(({ path, router }) => {
-    console.log('fucking', path)
-    app.use(`/api/${path}`, router)
+    app.use(`/${path}`, router)
   })
 
   return app
