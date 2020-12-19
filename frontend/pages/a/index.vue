@@ -37,6 +37,9 @@
 
 export default {
   name: 'Authentication',
+  mounted () {
+    this.$fireAuthStore.subscribe()
+  },
   methods: {
     async loginWithGoogle () {
       const provider = new this.$fireModule.auth.GoogleAuthProvider()
@@ -45,17 +48,6 @@ export default {
         // console.log({ additionalUserInfo, credential })
 
         await this.$fire.auth.signInWithPopup(provider)
-
-        const idToken = await this.$fire.auth.currentUser.getIdToken()
-
-        console.log('fucking idToken : ', idToken)
-
-        this.$axios.setBaseURL('http://localhost:5001/m-journal/us-central1/api/')
-        this.$axios.setToken(idToken, 'Bearer')
-
-        const res = await this.$axios.get('/hello/who')
-
-        console.log('fucking', res)
       } catch (e) {
         console.error(e)
       }

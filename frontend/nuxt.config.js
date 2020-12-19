@@ -67,19 +67,21 @@ export default {
     },
     services: {
       //  https://firebase.nuxtjs.org/service-options/auth/
-      // auth: {
-      //   persistence: 'local',
-      //   initialize: {
-      //     onAuthStateChangedMutation: 'auth/ON_AUTH_STATE_CHANGED_MUTATION',
-      //     onAuthStateChangedAction: 'auth/onAuthStateChangedAction',
-      //     subscribeManually: false
-      //   }
-      // }
+      auth: {
+        persistence: 'local',
+        initialize: {
+          onAuthStateChangedMutation: 'auth/ON_AUTH_STATE_CHANGED_MUTATION',
+          onAuthStateChangedAction: 'auth/onAuthStateChangedAction',
+          subscribeManually: true
+        }
+      }
     }
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:5001/m-journal/us-central1/api/'
+  },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
