@@ -13,7 +13,7 @@ router.get('/Who',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    return response.success(res, { user })
+    return res.json(user)
 })
 
 module.exports = router
