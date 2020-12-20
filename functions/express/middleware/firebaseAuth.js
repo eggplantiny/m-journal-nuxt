@@ -8,7 +8,7 @@ const response = require('../utils/response')
 const firebaseModule = require('../../utils/firebaseModule')()
 
 const validateFirebaseIdToken = async (req, res, next) => {
-  console.log('Check if request is authorized with Firebase ID token')
+  // console.log('Check if request is authorized with Firebase ID token')
 
   if ((!req.headers.authorization || !req.headers.authorization.startsWith('Bearer ')) &&
     !(req.cookies && req.cookies.__session)) {
@@ -23,7 +23,7 @@ const validateFirebaseIdToken = async (req, res, next) => {
 
   let idToken
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
-    console.log('Found "Authorization" header')
+    // console.log('Found "Authorization" header')
     // Read the ID Token from the Authorization header.
     idToken = req.headers.authorization.split('Bearer ')[1]
   } else if(req.cookies) {
@@ -36,11 +36,11 @@ const validateFirebaseIdToken = async (req, res, next) => {
     return
   }
 
-  console.log('fucking id token : ', idToken)
+  // console.log('fucking id token : ', idToken)
 
   try {
     const decodedIdToken = await firebaseModule.auth.verifyIdToken(idToken)
-    console.log('ID Token correctly decoded', decodedIdToken)
+    // console.log('ID Token correctly decoded', decodedIdToken)
     req.user = decodedIdToken
     return next()
   } catch (error) {

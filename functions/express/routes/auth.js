@@ -1,19 +1,16 @@
 const express = require('express')
+const userController = require('../controller/user')
+
 const router = express.Router()
 
 const validateFirebaseIdToken = require('../middleware/firebaseAuth')
-const response = require('../utils/response')
 
-router.get('/World',
-  async (req, res) => {
-  return response.success(res, { hello: 'Hello World!' })
-})
-
-router.get('/Who',
+router.get('/SignUp',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    return response.success(res, user)
-})
+    const result = await userController.addUser(user)
+    return res.json(result)
+  })
 
 module.exports = router

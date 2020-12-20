@@ -17,8 +17,8 @@ function redirect (res, url, status = 302) {
 }
 
 function success (res, result) {
-  const messages = getRegularMessageStructure({ result })
-  return res.status(200).json(messages)
+  // const messages = getRegularMessageStructure({ result })
+  return res.status(200).json(result)
 }
 
 function failed (res, { message, status = 400, time = new Date() }) {
