@@ -13,4 +13,12 @@ router.get('/SignUp',
     return res.json(result)
   })
 
+router.get('/CheckUser',
+  [validateFirebaseIdToken],
+  async (req, res) => {
+    const user = req.user
+    const result = await userController.checkUser(user)
+    return res.json(result)
+  })
+
 module.exports = router

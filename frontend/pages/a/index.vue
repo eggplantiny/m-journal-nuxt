@@ -54,7 +54,8 @@ export default {
     },
     async callAPI () {
       try {
-        const res = await this.$axios.get('/auth/SignUp')
+        const res = await this.$axios.get('/auth/CheckUser')
+
         console.log('fucking', res)
       } catch (e) {
         console.error(e)
