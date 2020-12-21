@@ -22,12 +22,27 @@
         block
         large
         dark
-        @click="callAPI"
+        @click="checkUser"
       >
         <v-icon class="mx-2">
           mdi-call
         </v-icon>
-        API TEST
+        CHECK USER
+      </v-btn>
+    </v-col>
+    <v-col cols="12" sm="4">
+      <v-btn
+        color="red lighten-2"
+        elevation="0"
+        block
+        large
+        dark
+        @click="signUp"
+      >
+        <v-icon class="mx-2">
+          mdi-call
+        </v-icon>
+        SIGN UP
       </v-btn>
     </v-col>
   </v-row>
@@ -52,11 +67,20 @@ export default {
         console.error(e)
       }
     },
-    async callAPI () {
+    async checkUser () {
       try {
         const res = await this.$axios.get('/auth/CheckUser')
 
-        console.log('fucking', res)
+        console.log('Check User', res)
+      } catch (e) {
+        console.error(e)
+      }
+    },
+    async signUp () {
+      try {
+        const res = await this.$axios.get('/auth/SignUp')
+
+        console.log('Sign Up', res)
       } catch (e) {
         console.error(e)
       }

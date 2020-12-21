@@ -18,8 +18,10 @@ async function addUser (user) {
 
 async function checkUser (user) {
   const { uid } = user
-  const docRef = await fm.store.collection('users').select('uid').where('uid', '==', uid)
-  return docRef.empty
+  const userRef = fm.store.collection('users').doc(uid)
+  const userDoc = await userRef.get()
+
+  return userDoc.exists
 }
 
 module.exports = {
