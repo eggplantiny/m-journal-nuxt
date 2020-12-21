@@ -20,11 +20,17 @@ export const actions = {
     if (!authUser) {
       // claims = null
       // perform logout operations
-    } else {
-      const idToken = await this.$fire.auth.currentUser.getIdToken()
-      // console.log('fucking!!', this.$axios)
-      this.$axios.setToken(idToken, 'Bearer')
-      // Do something with the authUser and the claims object...
+      return
+    }
+
+    const idToken = await this.$fire.auth.currentUser.getIdToken()
+    this.$axios.setToken(idToken, 'Bearer')
+
+    const { data } = await this.$axios.get('/auth/CheckUser')
+
+    if (data === false) {
+      await this.$axios.post('/auth/SignUp')
+      console.log('signUp Success !')
     }
   }
 }

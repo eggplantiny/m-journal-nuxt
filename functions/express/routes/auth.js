@@ -5,7 +5,7 @@ const router = express.Router()
 
 const validateFirebaseIdToken = require('../middleware/firebaseAuth')
 
-router.get('/SignUp',
+router.post('/SignUp',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user

@@ -13,7 +13,7 @@ async function addUser (user) {
     verified: true,
     uid
   })
-  return doc
+  return uid
 }
 
 async function checkUser (user) {
