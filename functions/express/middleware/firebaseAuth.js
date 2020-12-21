@@ -5,7 +5,7 @@
 // when decoded successfully, the ID Token content will be added as `req.user`.
 
 const response = require('../utils/response')
-const firebaseModule = require('../../utils/firebaseModule')()
+const firebaseModule = require('../../firebaseModule')()
 
 const validateFirebaseIdToken = async (req, res, next) => {
   // console.log('Check if request is authorized with Firebase ID token')

@@ -1,5 +1,5 @@
 const admin = require('firebase-admin')
-const cert = require('../skey.json')
+const cert = require('./skey.json')
 
 function firebaseModuleClosure () {
   admin.initializeApp({
@@ -11,6 +11,8 @@ function firebaseModuleClosure () {
   const store = admin.firestore()
   const auth = admin.auth()
   const increment = admin.firestore.FieldValue.increment
+
+  console.log('Firebase Module Initialized')
 
   return () => {
     return {

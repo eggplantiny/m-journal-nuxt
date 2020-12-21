@@ -1,5 +1,6 @@
 const express = require('express')
 const userController = require('../controller/user')
+const authController = require('../controller/auth')
 
 const router = express.Router()
 
@@ -17,7 +18,7 @@ router.get('/CheckUser',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    const result = await userController.checkUser(user)
+    const result = await authController.checkUser(user)
     return res.json(result)
   })
 
