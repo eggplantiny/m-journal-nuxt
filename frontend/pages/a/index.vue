@@ -78,7 +78,15 @@ export default {
     },
     async signUp () {
       try {
-        const res = await this.$axios.get('/auth/SignUp')
+        const nickName = 'sigran0'
+        const dark = false
+        const color = '#7642a6'
+
+        const res = await this.$axios.post('/auth/SignUp', {
+          nickName,
+          dark,
+          color
+        })
 
         console.log('Sign Up', res)
       } catch (e) {

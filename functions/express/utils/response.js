@@ -26,8 +26,18 @@ function failed (res, { message, status = 400, time = new Date() }) {
   return res.status(status).json(messages)
 }
 
+function needParameter (res, parameterName, time = new Date()) {
+  const message = `Need parameter [${parameterName}]`
+  const status = 400
+  const messages = getRegularMessageStructure({ message, status, time })
+  return res.status(400).json(messages)
+}
+
 module.exports = {
   success,
   failed,
-  redirect
+  redirect,
+  errorHandler: {
+    needParameter
+  }
 }
