@@ -14,19 +14,19 @@ router.post('/SignUp',
     const user = req.user
     const { nickName, color, dark } = req.body
 
-    if (!nickName) {
+    if (nickName === undefined) {
       return response.errorHandler.needParameter(res, 'nickName')
     }
 
-    if (!color) {
+    if (color === undefined) {
       return response.errorHandler.needParameter(res, 'color')
     }
 
-    if (!dark) {
+    if (dark === undefined) {
       return response.errorHandler.needParameter(res, 'dark')
     }
 
-    const uid = await userController.addUser(user, nickName, color)
+    const uid = await userController.addUser(user, nickName, color, dark)
     return response.success(res, { uid })
   })
 

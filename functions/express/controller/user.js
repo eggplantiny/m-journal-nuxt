@@ -1,12 +1,14 @@
 const fm = require('../../firebaseModule')()
 
-async function addUser (user, nickName) {
+async function addUser (user, nickName, color, dark) {
   const { uid, name, email, picture } = user
   const doc = fm.store.collection('users').doc(uid)
 
   await doc.set({
     createdAt: new Date(),
     nickName,
+    color,
+    dark,
     name,
     email,
     picture,
