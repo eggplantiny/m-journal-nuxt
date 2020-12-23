@@ -45,6 +45,21 @@
         SIGN UP
       </v-btn>
     </v-col>
+    <v-col cols="12" sm="4">
+      <v-btn
+        color="red lighten-2"
+        elevation="0"
+        block
+        large
+        dark
+        @click="openDialog"
+      >
+        <v-icon class="mx-2">
+          mdi-call
+        </v-icon>
+        openDialog
+      </v-btn>
+    </v-col>
   </v-row>
 </template>
 
@@ -92,6 +107,9 @@ export default {
       } catch (e) {
         console.error(e)
       }
+    },
+    openDialog () {
+      this.$store.dispatch('loginDialog/openDialog')
     }
   }
 }
