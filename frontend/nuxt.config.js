@@ -50,7 +50,8 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/firebase',
-    ['nuxt-buefy', { css: true, materialDesignIcons: true }]
+    ['nuxt-buefy', { css: true, materialDesignIcons: true }],
+    'vuetify-dialog/nuxt'
   ],
 
   //  Firebase : https://firebase.nuxtjs.org/guide/getting-started
@@ -109,8 +110,12 @@ export default {
 
   vuetifyDialog: {
     property: '$dialog',
-    confirm: {}
-    // ...
+    confirm: {
+      actions: {
+        false: '아니요',
+        true: '네'
+      }
+    }
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
