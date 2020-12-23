@@ -16,22 +16,14 @@ export const mutations = {
 }
 
 export const actions = {
-  async onAuthStateChangedAction (ctx, { authUser, claims }) {
+  onAuthStateChangedAction (context, { authUser, claims }) {
     if (!authUser) {
       // claims = null
       // perform logout operations
       return
     }
 
-    const idToken = await this.$fire.auth.currentUser.getIdToken()
-    this.$axios.setToken(idToken, 'Bearer')
-
-    const { data } = await this.$axios.get('/auth/CheckUser')
-
-    if (data === false) {
-      await this.$axios.post('/auth/SignUp')
-      console.log('signUp Success !')
-    }
+    console.log('Login success')
   }
 }
 

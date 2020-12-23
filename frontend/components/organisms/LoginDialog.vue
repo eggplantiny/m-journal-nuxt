@@ -52,16 +52,27 @@ export default {
   },
   methods: {
     async loginWithGoogle () {
-      const provider = new this.$fireModule.auth.GoogleAuthProvider()
+      //  구글 로그인 시도
       try {
-        // const { additionalUserInfo, credential } = await this.$fire.auth.signInWithPopup(provider)
-        // console.log({ additionalUserInfo, credential })
-
-        const res = await this.$fire.auth.signInWithPopup(provider)
-        console.log(res)
+        const provider = new this.$fireModule.auth.GoogleAuthProvider()
+        await this.$fire.auth.signInWithPopup(provider)
+        const idToken = await this.$fire.auth.currentUser.getIdToken()
+        this.$axios.setToken(idToken, 'Bearer')
       } catch (e) {
         console.error(e)
+        await this.$dialog.notify.error('에러가 발생했어요 😲')
+        this.model = false
       }
+
+      try {
+        const { data } = await this.$axios.get('/auth/CheckUser')
+        console.log(data)
+      } catch (e) {
+        await this.$dialog.notify.error('에러가 발생했어요 😲')
+        console.error(e)
+      }
+
+      this.model = false
     }
   }
 }
