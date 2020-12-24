@@ -39,13 +39,13 @@ export default {
   computed: {
     model: {
       get () {
-        return this.$store.getters['loginDialog/model']
+        return this.$store.getters['dialog/loginDialog']
       },
       set (value) {
         if (value === true) {
-          this.$store.dispatch('loginDialog/openDialog')
+          this.$store.dispatch('dialog/loginOpen')
         } else {
-          this.$store.dispatch('loginDialog/closeDialog')
+          this.$store.dispatch('dialog/closeOpen')
         }
       }
     }

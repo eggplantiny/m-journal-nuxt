@@ -109,7 +109,7 @@ export default {
       }
     },
     openDialog () {
-      this.$store.dispatch('loginDialog/openDialog')
+      this.$store.dispatch('dialog/loginOpen')
     }
   }
 }
