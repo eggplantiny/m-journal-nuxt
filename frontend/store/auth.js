@@ -12,6 +12,9 @@ export const mutations = {
     const { displayName, email, emailVerified, photoURL } = authUser
 
     state.user = { displayName, email, emailVerified, photoURL }
+  },
+  FETCH_USER (state, user) {
+    state.user = user
   }
 }
 
@@ -26,8 +29,14 @@ export const actions = {
 
     const idToken = await this.$fire.auth.currentUser.getIdToken()
     this.$axios.setToken(idToken, 'Bearer')
-
-    console.log('Login success')
+  },
+  async fetchUser ({ commit }) {
+    const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data)
+    if (exists) {
+      commit('FETCH_USER', userInfo)
+    } else {
+      throw new Error('NEED_SIGNUP')
+    }
   }
 }
 
