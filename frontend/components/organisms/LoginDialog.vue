@@ -45,7 +45,7 @@ export default {
         if (value === true) {
           this.$store.dispatch('dialog/loginOpen')
         } else {
-          this.$store.dispatch('dialog/closeOpen')
+          this.$store.dispatch('dialog/loginClose')
         }
       }
     }

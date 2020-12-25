@@ -6,7 +6,7 @@ export const state = () => {
 
 export const mutations = {
   LOGIN_DIALOG (state, model) {
-    state.model = model
+    state.loginDialog = model
   }
 }
 

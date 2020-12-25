@@ -16,12 +16,16 @@ export const mutations = {
 }
 
 export const actions = {
-  onAuthStateChangedAction (context, { authUser, claims }) {
+  async onAuthStateChangedAction (context, { authUser, claims }) {
     if (!authUser) {
+      console.log(claims)
       // claims = null
       // perform logout operations
       return
     }
+
+    const idToken = await this.$fire.auth.currentUser.getIdToken()
+    this.$axios.setToken(idToken, 'Bearer')
 
     console.log('Login success')
   }
