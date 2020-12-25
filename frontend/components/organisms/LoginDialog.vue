@@ -45,7 +45,7 @@ export default {
         if (value === true) {
           this.$store.dispatch('dialog/loginOpen')
         } else {
-          this.$store.dispatch('dialog/closeOpen')
+          this.$store.dispatch('dialog/loginClose')
         }
       }
     }
@@ -65,14 +65,19 @@ export default {
       }
 
       try {
-        const { data } = await this.$axios.get('/auth/CheckUser')
-        console.log(data)
+        const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data)
+
+        if (exists) {
+          this.$dialog.notify.success(`안녕하세요 ${userInfo.nickName} 님 😊`)
+        } else {
+          this.$dialog.notify.warning('회원가입이 필요합니다 😊')
+        }
       } catch (e) {
         await this.$dialog.notify.error('에러가 발생했어요 😲')
         console.error(e)
+      } finally {
+        this.model = false
       }
-
-      this.model = false
     }
   }
 }

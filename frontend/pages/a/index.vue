@@ -84,9 +84,11 @@ export default {
     },
     async checkUser () {
       try {
-        const res = await this.$axios.get('/auth/CheckUser')
+        const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data)
 
-        console.log('Check User', res)
+        console.log({
+          userInfo, exists
+        })
       } catch (e) {
         console.error(e)
       }

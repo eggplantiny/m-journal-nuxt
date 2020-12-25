@@ -34,10 +34,8 @@ router.get('/CheckUser',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    const registered = await userController.checkUser(user)
-    return response.success(res, {
-      registered
-    })
+    const { exists, userInfo } = await userController.checkUser(user)
+    return response.success(res, { exists, userInfo })
   })
 
 module.exports = router

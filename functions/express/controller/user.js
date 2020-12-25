@@ -22,7 +22,12 @@ async function checkUser (user) {
   const userRef = fm.store.collection('users').doc(uid)
   const userDoc = await userRef.get()
 
-  return userDoc.exists
+  const exists = userDoc.exists
+  const userInfo = userDoc.data()
+  return {
+    exists,
+    userInfo
+  }
 }
 
 module.exports = {
