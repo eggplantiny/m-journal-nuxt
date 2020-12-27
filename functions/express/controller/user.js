@@ -1,4 +1,4 @@
-const fm = require('../../firebaseModule')()
+const fm = require('../../firebaseModule')
 
 async function addUser (user, nickName, color, dark) {
   const { uid, name, email, picture } = user

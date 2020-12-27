@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const validateFirebaseIdToken = require('../middleware/firebaseAuth')
-const response = require('../utils/response')
+const response = require('../helper/response')
 
 router.get('/World',
   async (req, res) => {
@@ -16,4 +16,7 @@ router.get('/Who',
     return response.success(res, user)
 })
 
-module.exports = router
+module.exports = {
+  name: 'hello',
+  router
+}
