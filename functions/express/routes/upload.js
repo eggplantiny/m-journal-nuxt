@@ -27,12 +27,13 @@ router.post('/',
   // [validateFirebaseIdToken],
   async (req, res) => {
     //  Validation Parameters
-    if (!req.files || !req.files.image) {
+    consola.info(req.file.image)
+    if (!req.file || !req.file.image) {
       return response.failed(res, { message: 'No image were uploaded' })
     }
 
-    const image = req.files.image
-    const { mimetype, data } = image
+    const image = req.file.image
+    const { mimetype, buffer } = image
 
     if (mimetype !== 'image/jpeg' && mimetype !== 'image/png') {
       return response.failed(res, { message: 'Invalid file type, only JPEG and PNG is allowed!' })
@@ -42,8 +43,8 @@ router.post('/',
     let buffers = null
     try {
       const [original, thumbnail] = await Promise.all([
-        makeOriginal(data),
-        makeThumbnail(data)
+        makeOriginal(buffer),
+        makeThumbnail(buffer)
       ])
       buffers = {
         thumbnail,
@@ -62,8 +63,8 @@ router.post('/',
     let result
     try {
       result = await Promise.all([
-        uploadFile(buffers.original, originalKey, 'original'),
-        uploadFile(buffers.thumbnail, thumbnailKey, 'thumbnail')
+        uploadFile(buffers.original, originalKey, 'original', mimetype),
+        uploadFile(buffers.thumbnail, thumbnailKey, 'thumbnail', mimetype)
       ])
     } catch (e) {
       consola.error(e)

@@ -3,6 +3,8 @@ const os = require('os')
 const path = require('path')
 const fs = require('fs')
 
+const consola = require('consola')
+
 exports.filesUpload = function(req, res, next) {
   // See https://cloud.google.com/functions/docs/writing/http#multipart_data
   const busboy = new Busboy({
@@ -16,6 +18,7 @@ exports.filesUpload = function(req, res, next) {
   const fields = {}
   const files = []
   const fileWrites = []
+  const file = {}
   // Note: os.tmpdir() points to an in-memory file system on GCF
   // Thus, any files in it must fit in the instance's memory.
   const tmpdir = os.tmpdir()
@@ -37,7 +40,8 @@ exports.filesUpload = function(req, res, next) {
       writeStream.on('finish', () => {
         fs.readFile(filepath, (err, buffer) => {
           const size = Buffer.byteLength(buffer)
-          console.log(`${filename} is ${size} bytes`)
+          consola.info(`${filename} is ${size} bytes`)
+
           if (err) {
             return reject(err)
           }
@@ -69,6 +73,11 @@ exports.filesUpload = function(req, res, next) {
       .then(() => {
         req.body = fields
         req.files = files
+        if (files.length === 1) {
+          req.file = {}
+          const target = files[0]
+          req.file[target.fieldname] = target
+        }
         return next()
       })
       .catch(next)

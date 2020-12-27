@@ -1,7 +1,18 @@
-const fm = require('../../firebaseModule')
+const { bucket } = require('../../firebaseModule')
 
-function uploadFile (file, fileKey, path, root = 'image') {
-  return fm.storage().ref().child(`${root}/${path}/${fileKey}`).put(file)
+async function uploadFile (buffer, fileKey, path, mimeType, root = 'image') {
+  const file = bucket.file(`${root}/${path}/${fileKey}`)
+
+  try {
+    await file.save(buffer, {
+      metadata: { contentType: mimeType, public: true, validation: 'md5' }
+    })
+
+    const [url] = await file.getSignedUrl({ action: 'read', expires: '2999-12-31' })
+    return url
+  } catch (e) {
+    throw e
+  }
 }
 
 module.exports = {
