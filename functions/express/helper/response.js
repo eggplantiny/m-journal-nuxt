@@ -1,4 +1,5 @@
-const getRegularMessageStructure = ({
+const getRegularMessageStructure = (
+  {
     message = null,
     status = 200,
     time = new Date(),
@@ -17,8 +18,8 @@ function redirect (res, url, status = 302) {
 }
 
 function success (res, result) {
-  // const messages = getRegularMessageStructure({ result })
-  return res.status(200).json(result)
+  const messages = getRegularMessageStructure({ result })
+  return res.status(200).json(messages)
 }
 
 function failed (res, { message, status = 400, time = new Date() }) {

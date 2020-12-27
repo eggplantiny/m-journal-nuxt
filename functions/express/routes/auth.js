@@ -2,7 +2,7 @@ const express = require('express')
 const userController = require('../controller/user')
 const authController = require('../controller/auth')
 
-const response = require('../utils/response')
+const response = require('../helper/response')
 
 const router = express.Router()
 
@@ -38,4 +38,7 @@ router.get('/CheckUser',
     return response.success(res, result)
   })
 
-module.exports = router
+module.exports = {
+  name: 'auth',
+  router
+}

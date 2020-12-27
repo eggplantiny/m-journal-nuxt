@@ -1,7 +1,5 @@
 const hello = require('./hello')
 const auth = require('./auth')
+const upload = require('./upload')
 
-module.exports = [
-  { path: 'hello',  router: hello },
-  { path: 'auth',   router: auth  }
-]
+module.exports = [hello, auth, upload]

@@ -26,4 +26,4 @@ function firebaseModuleClosure () {
 
 const firebaseModule = firebaseModuleClosure()
 
-module.exports = firebaseModule
+module.exports = firebaseModule()

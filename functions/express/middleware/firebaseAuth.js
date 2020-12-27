@@ -4,8 +4,8 @@
 // `Authorization: Bearer <Firebase ID Token>`.
 // when decoded successfully, the ID Token content will be added as `req.user`.
 
-const response = require('../utils/response')
-const firebaseModule = require('../../firebaseModule')()
+const response = require('../helper/response')
+const firebaseModule = require('../../firebaseModule')
 
 const validateFirebaseIdToken = async (req, res, next) => {
   // console.log('Check if request is authorized with Firebase ID token')
@@ -32,8 +32,7 @@ const validateFirebaseIdToken = async (req, res, next) => {
     idToken = req.cookies.__session
   } else {
     // No cookie
-    response.failed(res, { message: 'Unauthorized', status: 403 })
-    return
+    return response.failed(res, { message: 'Unauthorized', status: 403 })
   }
 
   // console.log('fucking id token : ', idToken)
@@ -45,9 +44,9 @@ const validateFirebaseIdToken = async (req, res, next) => {
     return next()
   } catch (error) {
     console.error('Error while verifying Firebase ID token:', error)
-    response.failed(res, { message: 'Unauthorized', status: 403 })
+    return response.failed(res, { message: 'Unauthorized', status: 403 })
   }
-};
+}
 
 
 module.exports = validateFirebaseIdToken
