@@ -1,7 +1,7 @@
 const cors = require('cors')
 const express = require('express')
 const cookieParser = require('cookie-parser')()
-const fileUpload = require('express-fileupload')
+// const fileUpload = require('express-fileupload')
 const morgan = require('morgan')
 const consola = require('consola')
 
@@ -18,9 +18,9 @@ function generateApp () {
   app.use(express.urlencoded({ extended: true }))
   app.use(cookieParser)
   app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
-  app.use(fileUpload({
-      limits: { fileSize: 50 * 1024 * 1024 }  //  50 MB
-    }))
+  // app.use(fileUpload({
+  //     limits: { fileSize: 50 * 1024 * 1024 }  //  50 MB
+  //   }))
   // app.use(validateFirebaseIdToken)
 
   routes.forEach(({ name, router }) => app.use(`/${name}`, router))

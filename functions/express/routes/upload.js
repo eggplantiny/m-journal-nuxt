@@ -1,8 +1,9 @@
 
 const express = require('express')
+// const fileUpload = require('express-fileupload')
 const response = require('../helper/response')
 
-const fileUpload = require('express-fileupload')
+const { filesUpload } = require('../middleware/filesUpload')
 
 const {
   uploadFile
@@ -20,11 +21,12 @@ const validateFirebaseIdToken = require('../middleware/firebaseAuth')
 const router = express.Router()
 
 router.post('/',
+  [
+    filesUpload
+  ],
   // [validateFirebaseIdToken],
-  [],
   async (req, res) => {
     //  Validation Parameters
-    consola.info(req.files)
     if (!req.files || !req.files.image) {
       return response.failed(res, { message: 'No image were uploaded' })
     }
@@ -70,7 +72,7 @@ router.post('/',
 
     const imageUrls = result.map(item => item.Location)
 
-    consola.info('Image uploaded successfully on S3')
+    consola.info('Image uploaded successfully on Cloud Storage')
     imageUrls.forEach(url => consola.info(`> ${url}`))
 
     return response.success(res, result)
