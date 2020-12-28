@@ -100,11 +100,13 @@ export default {
       }
 
       try {
-        const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data)
+        const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data.result)
 
         if (exists) {
-          this.$dialog.notify.success(`안녕하세요 ${userInfo.nickName} 님 😊`)
+          const { uid, nickName } = userInfo
           this.model = false
+          this.$dialog.notify.success(`안녕하세요 ${nickName} 님 😊`)
+          return this.$router.push(`/u/${uid}`)
         } else {
           this.$dialog.notify.warning('회원가입이 필요합니다 😊')
           this.step = 'sign_up'
@@ -124,7 +126,7 @@ export default {
       }
 
       try {
-        const { uid } = await this.$axios.post('/auth/SignUp', { nickName, dark, color }).then(({ data }) => data)
+        const { uid } = await this.$axios.post('/auth/SignUp', { nickName, dark, color }).then(({ data }) => data.result)
         this.$dialog.notify.success(`반갑습니다 ${nickName} 님 😀`)
         this.$router.push(`/u/${uid}`)
       } catch (e) {

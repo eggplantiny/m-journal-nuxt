@@ -1,5 +1,6 @@
 export const state = () => {
   return {
+    fireUser: null,
     user: null
   }
 }
@@ -7,11 +8,11 @@ export const state = () => {
 export const mutations = {
   ON_AUTH_STATE_CHANGED_MUTATION (state, { authUser, claims }) {
     if (!authUser) {
-      state.user = null
+      state.fireUser = null
     }
     const { displayName, email, emailVerified, photoURL } = authUser
 
-    state.user = { displayName, email, emailVerified, photoURL }
+    state.fireUser = { displayName, email, emailVerified, photoURL }
   },
   FETCH_USER (state, user) {
     state.user = user
@@ -19,26 +20,26 @@ export const mutations = {
 }
 
 export const actions = {
-  async onAuthStateChangedAction (context, { authUser, claims }) {
+  onAuthStateChangedAction (context, { authUser, claims }) {
     if (!authUser) {
       console.log(claims)
       // claims = null
       // perform logout operations
-      return
     }
 
-    const idToken = await this.$fire.auth.currentUser.getIdToken()
-    this.$axios.setToken(idToken, 'Bearer')
+    // const idToken = await this.$fire.auth.currentUser.getIdToken()
+    // this.$axios.setToken(idToken, 'Bearer')
   },
   async fetchUser ({ commit }) {
-    const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data)
+    const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data.result)
+    console.log({ userInfo, exists })
     if (exists) {
       commit('FETCH_USER', userInfo)
-    } else {
-      throw new Error('NEED_SIGNUP')
     }
+    return exists
   }
 }
 
 export const getters = {
+  user: state => state.user
 }
