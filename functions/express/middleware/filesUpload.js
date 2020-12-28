@@ -11,7 +11,7 @@ exports.filesUpload = function(req, res, next) {
     headers: req.headers,
     limits: {
       // Cloud functions impose this restriction anyway
-      fileSize: 20 * 1024 * 1024,
+      fileSize: 10 * 1024 * 1024
     }
   })
 
@@ -31,7 +31,7 @@ exports.filesUpload = function(req, res, next) {
 
   busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
     const filepath = path.join(tmpdir, filename)
-    console.log(`Handling file upload field ${fieldname}: ${filename} (${filepath})`)
+    consola.log(`Handling file upload field ${fieldname}: ${filename} (${filepath})`)
     const writeStream = fs.createWriteStream(filepath)
     file.pipe(writeStream)
 
