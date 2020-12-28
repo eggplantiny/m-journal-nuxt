@@ -19,19 +19,18 @@ export const mutations = {
 }
 
 export const actions = {
-  async onAuthStateChangedAction (context, { authUser, claims }) {
+  onAuthStateChangedAction (context, { authUser, claims }) {
     if (!authUser) {
       console.log(claims)
       // claims = null
       // perform logout operations
-      return
     }
 
-    const idToken = await this.$fire.auth.currentUser.getIdToken()
-    this.$axios.setToken(idToken, 'Bearer')
+    // const idToken = await this.$fire.auth.currentUser.getIdToken()
+    // this.$axios.setToken(idToken, 'Bearer')
   },
   async fetchUser ({ commit }) {
-    const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data)
+    const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data.result)
     if (exists) {
       commit('FETCH_USER', userInfo)
     } else {
@@ -41,4 +40,5 @@ export const actions = {
 }
 
 export const getters = {
+  user: state => state.user
 }

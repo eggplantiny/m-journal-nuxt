@@ -67,6 +67,7 @@
 
 export default {
   name: 'Authentication',
+  middleware: ['auth'],
   mounted () {
     this.$fireAuthStore.subscribe()
   },
@@ -84,7 +85,7 @@ export default {
     },
     async checkUser () {
       try {
-        const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data)
+        const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data.result)
 
         console.log({
           userInfo, exists
