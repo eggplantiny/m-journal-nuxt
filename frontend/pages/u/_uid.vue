@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-col cols="12" sm="5" class="py-0">
+    <v-col cols="12" sm="12" class="py-0">
       <vc-date-picker
         v-model="date"
         color="indigo"
@@ -8,7 +8,7 @@
         @update:from-page="updateCalendar"
       />
     </v-col>
-    <v-col cols="12" sm="7" class="py-0">
+    <v-col cols="12" sm="12" class="py-0">
       <v-timeline
         dense
         clipped
@@ -176,6 +176,7 @@ function makeid (size) {
 
 export default {
   name: 'UserCalendar',
+  middleware: ['auth', 'checkAccount'],
   layout: 'app',
   data () {
     const date = moment().toDate()

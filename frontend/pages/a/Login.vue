@@ -42,21 +42,17 @@ export default {
         const idToken = await this.$fire.auth.currentUser.getIdToken()
         this.$axios.setToken(idToken, 'Bearer')
       } catch (e) {
-        this.model = false
         this.$dialog.notify.error(e)
       }
 
       try {
-        const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data.result)
+        const { userInfo, exists } = await this.$store.dispatch('auth/fetchUser')
 
         if (exists) {
-          const { uid, nickName } = userInfo
-          this.model = false
-          this.$dialog.notify.success(`안녕하세요 ${nickName} 님 😊`)
-          return this.$router.push(`/u/${uid}`)
+          const { uid } = userInfo
+          await this.$router.push(`/u/${uid}`)
         } else {
-          this.$dialog.notify.warning('회원가입이 필요합니다 😊')
-          this.step = 'sign_up'
+          return this.$router.push('/a/SignUp')
         }
       } catch (e) {
         return this.$dialog.notify.error(e)

@@ -34,7 +34,7 @@ export const actions = {
     if (exists) {
       commit('FETCH_USER', userInfo)
     }
-    return exists
+    return { userInfo, exists }
   }
 }
 
