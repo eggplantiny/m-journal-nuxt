@@ -1,6 +1,9 @@
 import colors from 'vuetify/es5/util/colors'
 
-require('dotenv').config()
+const nodeEnv = process.env.NODE_ENV
+require('dotenv').config({
+  path: `.env.${nodeEnv}`
+})
 
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
@@ -50,7 +53,12 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/firebase',
-    ['nuxt-buefy', { css: true, materialDesignIcons: true }],
+    [
+      'nuxt-buefy', {
+        css: true,
+        materialDesignIcons: true
+      }
+    ],
     'vuetify-dialog/nuxt'
   ],
 
@@ -81,7 +89,7 @@ export default {
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseURL: 'http://localhost:5001/m-journal/us-central1/api/'
+    baseURL: process.env.BASE_API_URL
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)

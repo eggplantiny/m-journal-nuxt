@@ -9,6 +9,7 @@ export const mutations = {
   ON_AUTH_STATE_CHANGED_MUTATION (state, { authUser, claims }) {
     if (!authUser) {
       state.fireUser = null
+      return
     }
 
     const { displayName, email, emailVerified, photoURL } = authUser
