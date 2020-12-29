@@ -1,6 +1,6 @@
 const express = require('express')
-const userController = require('../controller/user')
-const authController = require('../controller/auth')
+const userController = require('../models/user')
+const authController = require('../models/auth')
 
 const response = require('../helper/response')
 

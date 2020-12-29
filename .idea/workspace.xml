@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/express/models/diary.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/m-journal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/m-journal.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/express/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/express/middleware/firebaseAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/middleware/firebaseAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/express/routes/hello.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/routes/hello.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/utils/firebaseModule.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/utils/firebaseModule.js" afterDir="false" />
->>>>>>> 69acf765ce33643354110e08889f72c7af73226d
+      <change beforePath="$PROJECT_DIR$/functions/express/controller/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/models/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/controller/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/models/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/controller/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/routes/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/routes/upload.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,20 +79,11 @@
       <workItem from="1608199813100" duration="4018000" />
       <workItem from="1608287163821" duration="14000" />
       <workItem from="1608287216221" duration="1482000" />
+      <workItem from="1609253593131" duration="1815000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="549" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608289157566">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state x="549" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1608289157566" />
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1608288160808">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1608288160808" />
   </component>
 </project>
