@@ -94,9 +94,8 @@ export default {
         const idToken = await this.$fire.auth.currentUser.getIdToken()
         this.$axios.setToken(idToken, 'Bearer')
       } catch (e) {
-        console.error(e)
-        await this.$dialog.notify.error('에러가 발생했어요 😲')
         this.model = false
+        this.$dialog.notify.error(e)
       }
 
       try {
@@ -112,8 +111,7 @@ export default {
           this.step = 'sign_up'
         }
       } catch (e) {
-        console.error(e)
-        return this.$dialog.notify.error('에러가 발생했어요 😲')
+        return this.$dialog.notify.error(e)
       }
     },
     async signUp () {
@@ -130,8 +128,7 @@ export default {
         this.$dialog.notify.success(`반갑습니다 ${nickName} 님 😀`)
         this.$router.push(`/u/${uid}`)
       } catch (e) {
-        console.error(e)
-        return this.$dialog.notify.error('에러가 발생했어요 😲')
+        return this.$dialog.notify.error(e)
       }
     }
   }

@@ -54,14 +54,9 @@ export default {
         return this.$dialog.notify.error('닉네임은 2글자 이상 입력해주세요 😊')
       }
 
-      try {
-        const { uid } = await this.$axios.post('/auth/SignUp', { nickName, dark, color }).then(({ data }) => data.result)
-        this.$dialog.notify.success(`반갑습니다 ${nickName} 님 😀`)
-        this.$router.push(`/u/${uid}`)
-      } catch (e) {
-        console.error(e)
-        return this.$dialog.notify.error('에러가 발생했어요 😲')
-      }
+      const { uid } = await this.$axios.post('/auth/SignUp', { nickName, dark, color }).then(({ data }) => data.result)
+      this.$dialog.notify.success(`반갑습니다 ${nickName} 님 😀`)
+      this.$router.push(`/u/${uid}`)
     }
   }
 }

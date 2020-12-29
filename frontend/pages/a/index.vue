@@ -37,21 +37,6 @@
         block
         large
         dark
-        @click="signUp"
-      >
-        <v-icon class="mx-2">
-          mdi-call
-        </v-icon>
-        SIGN UP
-      </v-btn>
-    </v-col>
-    <v-col cols="12" sm="4">
-      <v-btn
-        color="red lighten-2"
-        elevation="0"
-        block
-        large
-        dark
         @click="openDialog"
       >
         <v-icon class="mx-2">
@@ -68,48 +53,17 @@
 export default {
   name: 'Authentication',
   middleware: ['auth'],
-  mounted () {
-    this.$fireAuthStore.subscribe()
-  },
   methods: {
     async loginWithGoogle () {
       const provider = new this.$fireModule.auth.GoogleAuthProvider()
-      try {
-        // const { additionalUserInfo, credential } = await this.$fire.auth.signInWithPopup(provider)
-        // console.log({ additionalUserInfo, credential })
-
-        await this.$fire.auth.signInWithPopup(provider)
-      } catch (e) {
-        console.error(e)
-      }
+      await this.$fire.auth.signInWithPopup(provider)
     },
     async checkUser () {
-      try {
-        const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data.result)
-
-        console.log({
-          userInfo, exists
-        })
-      } catch (e) {
-        console.error(e)
+      const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data.result)
+      if (exists) {
+        return this.$dialog.notify.info(JSON.stringify(userInfo))
       }
-    },
-    async signUp () {
-      try {
-        const nickName = 'sigran0'
-        const dark = false
-        const color = '#7642a6'
-
-        const res = await this.$axios.post('/auth/SignUp', {
-          nickName,
-          dark,
-          color
-        })
-
-        console.log('Sign Up', res)
-      } catch (e) {
-        console.error(e)
-      }
+      return this.$dialog.notify.error('유저정보가 없습니다.')
     },
     openDialog () {
       this.$store.dispatch('dialog/loginOpen')

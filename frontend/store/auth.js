@@ -10,19 +10,18 @@ export const mutations = {
     if (!authUser) {
       state.fireUser = null
     }
-    const { displayName, email, emailVerified, photoURL } = authUser
 
+    const { displayName, email, emailVerified, photoURL } = authUser
     state.fireUser = { displayName, email, emailVerified, photoURL }
   },
-  FETCH_USER (state, user) {
-    state.user = user
+  FETCH_USER (state, userInfo) {
+    state.user = userInfo
   }
 }
 
 export const actions = {
   onAuthStateChangedAction (context, { authUser, claims }) {
     if (!authUser) {
-      console.log(claims)
       // claims = null
       // perform logout operations
     }
@@ -32,11 +31,10 @@ export const actions = {
   },
   async fetchUser ({ commit }) {
     const { userInfo, exists } = await this.$axios.get('/auth/CheckUser').then(({ data }) => data.result)
-    console.log({ userInfo, exists })
     if (exists) {
       commit('FETCH_USER', userInfo)
     }
-    return exists
+    return { userInfo, exists }
   }
 }
 
