@@ -91,4 +91,5 @@ sw.*
 
 # env
 .env
-
+.env.development
+.env.production
