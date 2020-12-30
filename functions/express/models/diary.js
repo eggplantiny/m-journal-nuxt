@@ -11,10 +11,9 @@ async function fetchItem (user) {
   snapshots.forEach(doc => {
     const item = doc.data()
     const diaryId = doc.id
-    items.push({
-      ...item,
-      diaryId
-    })
+    item.diaryId = diaryId
+
+    items.push(item)
   })
   return items
 }
