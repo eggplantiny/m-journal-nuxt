@@ -1,4 +1,5 @@
 const fm = require('../../firebaseModule')
+const moment = require('moment')
 
 const collection = fm.store.collection('users')
 
@@ -9,32 +10,37 @@ async function fetchItem (user) {
   const items = []
   snapshots.forEach(doc => {
     const item = doc.data()
-    const id = doc.id
+    const diaryId = doc.id
     items.push({
       ...item,
-      id
+      diaryId
     })
   })
   return items
 }
 
-async function addItem (user, title, description, startTime, dateString, hashtags) {
+async function addItem (user, title, description, startAt, dateString, hashtags, color) {
   const { uid } = user
+  const createdAt = Date.now()
+  const modifiedAt = null
 
   const { id } = await collection.doc(uid).collection('diary').add({
     title,
     description,
-    startTime,
     dateString,
-    hashtags
+    hashtags,
+    color,
+    startAt,
+    createdAt,
+    modifiedAt
   })
 
   return id
 }
 
-async function deleteItem (user, did) {
+async function deleteItem (user, diaryId) {
   const { uid } = user
-  await collection.doc(uid).collection('diary').doc(did).delete()
+  await collection.doc(uid).collection('diary').doc(diaryId).delete()
 }
 
 module.exports = {

@@ -65,6 +65,7 @@
                               color="primary"
                               hide-details
                               outlined
+                              @keydown.enter.prevent="submitItem"
                             />
                             <v-expansion-panels flat>
                               <v-expansion-panel>
@@ -83,7 +84,7 @@
                                     auto-grow
                                   />
                                   <b-timepicker
-                                    v-model="input.startTime"
+                                    v-model="input.startAt"
                                     class="mt-4"
                                     placeholder="몇시에 하셨나요?"
                                   />
@@ -129,7 +130,7 @@
                           {{ item.title }}
                         </v-card-title>
                         <v-card-subtitle class="py-0">
-                          {{ formatTime(item.startTime) }}
+                          {{ formatTime(item.startAt) }}
                         </v-card-subtitle>
                         <v-card-text>
                           {{ item.description }}
@@ -155,24 +156,22 @@
           </template>
         </v-slide-x-transition>
       </v-timeline>
+      <v-card outlined flat>
+        <v-card-title class="justify-center">
+          <template v-if="targetItems.length === 1">
+            항목을 추가해보세요!
+          </template>
+          <template v-else>
+            총 {{ targetItems.length - 1 }} 개의 여정을 기록했어요!
+          </template>
+        </v-card-title>
+      </v-card>
     </v-col>
   </v-row>
 </template>
 
 <script>
 import moment from 'moment'
-
-function makeid (size) {
-  let result = ''
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  const charactersLength = characters.length
-
-  for (let c = 0; c < size; c++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength))
-  }
-
-  return result
-}
 
 export default {
   name: 'UserCalendar',
@@ -187,38 +186,6 @@ export default {
         {
           type: 'button',
           color: 'red lighten-1'
-        },
-        {
-          id: 0,
-          startTime: '2020-12-05 17:05',
-          dateString: '2020-12-05',
-          title: '운동 다녀오기',
-          description: '오늘은 등운동 가야 했지만 못가고 그냥 걷기만 했네 ㅎㅎㅎ',
-          color: 'indigo lighten-1'
-        },
-        {
-          id: 1,
-          startTime: '2020-12-05 18:12',
-          dateString: '2020-12-05',
-          title: '저녁밥',
-          description: '리앙 크리스피롤 먹음.',
-          color: 'green lighten-1'
-        },
-        {
-          id: 2,
-          startTime: '2020-12-05 19:25',
-          dateString: '2020-12-05',
-          title: '집청소',
-          description: '',
-          color: 'blue lighten-1'
-        },
-        {
-          id: 3,
-          startTime: '2020-12-05 19:25',
-          dateString: '2020-12-05',
-          title: '개발 💻',
-          description: 'm-journal 기초 레이아웃 잡기\n화면 테스트 진행',
-          color: 'purple lighten-1'
         }
       ],
       colors: [
@@ -258,8 +225,8 @@ export default {
       input: {
         title: '',
         description: '',
-        startTime: moment().startOf('hour').toDate(),
-        color: 0,
+        startAt: moment().toDate(),
+        color: 'purple lighten-1',
         show: false
       },
       showDetail: false
@@ -269,25 +236,46 @@ export default {
     targetItems () {
       const { items, date } = this
       const dateString = moment(date).format('YYYY-MM-DD')
-      return items.filter(item => moment(item.startTime).format('YYYY-MM-DD') === dateString || item.type === 'button')
+      return items.filter(item =>
+        moment(item.startAt)
+          .format('YYYY-MM-DD') === dateString || item.type === 'button'
+      ).sort((a, b) => moment(a.startAt).isBefore(b.startAt) ? 1 : -1)
     }
   },
+  watch: {
+    'input.show' (show) {
+      if (show === true) {
+        this.input.startAt = moment().toDate()
+      }
+    }
+  },
+  async mounted () {
+    const { result } = await this.$axios.$get('/Diary')
+    this.items.push(...result)
+  },
   methods: {
-    formatTime (value) {
-      return moment(value).format('HH시 mm분')
-    },
-    submitItem () {
-      const { title, description, startTime, color } = this.input
+    async submitItem () {
+      const { title, description, startAt, color } = this.input
       const date = this.date
-      const id = makeid(8)
 
-      this.items.push({
-        id,
+      const item = {
         title,
         description,
-        startTime: `${moment(date).format('YYYYY-MM-DD')} ${moment(startTime).format('hh:mm:ss')}`,
-        dateString: moment(date).format('YYYY-MM-DD'),
-        color
+        startAt,
+        color,
+        dateString: moment(date).format('YYYY-MM-DD')
+      }
+
+      let diaryId = null
+      try {
+        diaryId = await this.$axios.$post('/Diary', item).then(res => res.result)
+      } catch (e) {
+        this.$dialog.notify.error(`에러가 발생했어요 😯 (${e})`)
+      }
+
+      this.items.push({
+        ...item,
+        diaryId
       })
 
       this.input.show = false
@@ -295,10 +283,19 @@ export default {
       this.input.title = ''
       this.input.description = ''
     },
-    deleteItem (item) {
-      const index = this.items.findIndex(targetItem => targetItem.id === item.id)
-      if (index > -1) {
-        this.items.splice(index, 1)
+    formatTime (value) {
+      return moment(value).format('HH시 mm분')
+    },
+    async deleteItem (item) {
+      const { diaryId } = item
+      try {
+        await this.$axios.$delete(`/Diary/${diaryId}`)
+        const index = this.items.findIndex(targetItem => targetItem.diaryId === item.diaryId)
+        if (index > -1) {
+          this.items.splice(index, 1)
+        }
+      } catch (e) {
+        this.$dialog.notify.error(`에러가 발생했어요 😯 (${e})`)
       }
     },
     updateCalendar ({ year, month }) {

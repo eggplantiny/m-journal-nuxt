@@ -25,31 +25,35 @@ router.post('/',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    const { title, description, startTime, dateString, hashtags } = req.body
+    const { title, description, startAt, dateString, hashtags, color } = req.body
 
     if (!title) {
       return response.errorHandler.needParameter(res, 'title')
     }
 
-    if (!startTime) {
-      return response.errorHandler.needParameter(res, 'startTime')
+    if (!startAt) {
+      return response.errorHandler.needParameter(res, 'startAt')
     }
 
     if (!dateString) {
       return response.errorHandler.needParameter(res, 'dateString')
     }
 
-    const did = await Diary.addItem(user, title, description || '', startTime, dateString, hashtags || [])
-    return response.success(res, did)
+    if (!color) {
+      return response.errorHandler.needParameter(res, 'color')
+    }
+
+    const diaryId = await Diary.addItem(user, title, description || '', startAt, dateString, hashtags || [], color)
+    return response.success(res, diaryId)
   })
 
-router.delete('/:did',
+router.delete('/:diaryId',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    const { did } = req.params
+    const { diaryId } = req.params
     try {
-      await Diary.deleteItem(user, did)
+      await Diary.deleteItem(user, diaryId)
     } catch (e) {
       return response.failed(req, e)
     }
