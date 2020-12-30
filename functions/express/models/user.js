@@ -14,6 +14,7 @@ async function addUser (user, nickName, color, dark) {
     picture,
     uid
   })
+
   return uid
 }
 
