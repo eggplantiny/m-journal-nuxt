@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/functions/express/routes/diary.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/functions/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/express/helper/response.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/helper/response.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/express/models/diary.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/models/diary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/express/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/routes/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/express/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +22,20 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1lEgYFK5linwJOEF2iIMFqa5fST" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -84,7 +95,8 @@
       <workItem from="1608287216221" duration="1482000" />
       <workItem from="1609253593131" duration="2816000" />
       <workItem from="1609331008649" duration="18000" />
-      <workItem from="1609331072058" duration="4224000" />
+      <workItem from="1609331072058" duration="5070000" />
+      <workItem from="1609338188335" duration="6037000" />
     </task>
     <servers />
   </component>
@@ -97,6 +109,21 @@
         <entry key="MAIN">
           <value>
             <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
