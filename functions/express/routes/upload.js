@@ -7,7 +7,7 @@ const { filesUpload } = require('../middleware/filesUpload')
 
 const {
   uploadFile
-} = require('../controller/upload')
+} = require('../models/upload')
 
 const consola = require('consola')
 
