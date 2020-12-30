@@ -220,6 +220,14 @@ export default {
         {
           text: '검정',
           value: 'black lighten-1'
+        },
+        {
+          text: '분홍',
+          value: '#f5487f'
+        },
+        {
+          text: '베이지',
+          value: '#D4B886'
         }
       ],
       input: {
