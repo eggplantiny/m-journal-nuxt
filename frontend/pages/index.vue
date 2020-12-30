@@ -1,7 +1,15 @@
 <template>
   <v-row justify="center">
-    <v-col>
-      Hello Index
+    <v-col cols="12">
+      <v-btn
+        outlined
+        x-large
+        block
+        color="purple lighten-1"
+        @click="startApp"
+      >
+        시작하기
+      </v-btn>
     </v-col>
   </v-row>
 </template>
@@ -12,6 +20,11 @@ export default {
   layout: 'app',
   data () {
     return {
+    }
+  },
+  methods: {
+    startApp () {
+      this.$router.push('/Diary')
     }
   }
 }

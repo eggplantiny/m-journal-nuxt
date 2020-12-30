@@ -25,7 +25,7 @@ router.post('/',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    const { title, description, startAt, dateString, hashtags, color } = req.body
+    const { title, description, startAt, dateString, hashtags, color, mediaUrls } = req.body
 
     if (!title) {
       return response.errorHandler.needParameter(res, 'title')
@@ -43,7 +43,7 @@ router.post('/',
       return response.errorHandler.needParameter(res, 'color')
     }
 
-    const diaryId = await Diary.addItem(user, title, description || '', startAt, dateString, hashtags || [], color)
+    const diaryId = await Diary.addItem(user, title, startAt, dateString , color, description || '', hashtags || [], mediaUrls || [])
     return response.success(res, diaryId)
   })
 
