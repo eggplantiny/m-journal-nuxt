@@ -59,55 +59,59 @@
                             기록하기
                           </v-card-title>
                           <v-card-text>
-                            <v-text-field
-                              v-model="input.title"
-                              label="이번엔 어떤일을 하셨나요? 😯"
-                              color="primary"
-                              hide-details
-                              outlined
-                              @keydown.enter.prevent="submitItem"
-                            />
-                            <v-expansion-panels flat>
-                              <v-expansion-panel>
-                                <v-expansion-panel-header class="px-0">
-                                  자세히 기록하기
-                                </v-expansion-panel-header>
-                                <v-expansion-panel-content class="px-0">
-                                  <v-textarea
-                                    v-model="input.description"
-                                    class="mt-4"
-                                    label="조금 더 자세히 말해줄래요? 😄"
-                                    color="primary"
-                                    rows="3"
-                                    hide-details
-                                    outlined
-                                    auto-grow
-                                  />
-                                  <b-timepicker
-                                    v-model="input.startAt"
-                                    class="mt-4"
-                                    placeholder="몇시에 하셨나요?"
-                                  />
-                                  <div class="mt-4 text-h7">
-                                    색깔
-                                  </div>
-                                  <v-radio-group
-                                    v-model="input.color"
-                                    class="my-0"
-                                    row
-                                  >
-                                    <template v-for="(color, colorIndex) in colors">
-                                      <v-radio
-                                        :key="`${colorIndex}-color`"
-                                        :label="color.text"
-                                        :value="color.value"
-                                        :color="color.value"
-                                      />
-                                    </template>
-                                  </v-radio-group>
-                                </v-expansion-panel-content>
-                              </v-expansion-panel>
-                            </v-expansion-panels>
+                            <v-form
+                              ref="form"
+                            >
+                              <v-text-field
+                                v-model="input.title"
+                                label="이번엔 어떤일을 하셨나요? 😀"
+                                color="primary"
+                                hide-details="auto"
+                                outlined
+                                :rules="rules.required"
+                                @keydown.enter.prevent="submitItem"
+                              />
+                              <v-expansion-panels flat>
+                                <v-expansion-panel>
+                                  <v-expansion-panel-header class="px-0 py-0">
+                                    자세히 기록하기
+                                  </v-expansion-panel-header>
+                                  <v-expansion-panel-content class="px-0">
+                                    <v-textarea
+                                      v-model="input.description"
+                                      label="조금 더 자세히 말해줄래요? 😄"
+                                      color="primary"
+                                      rows="3"
+                                      hide-details
+                                      outlined
+                                      auto-grow
+                                    />
+                                    <b-timepicker
+                                      v-model="input.startAt"
+                                      class="mt-4"
+                                      placeholder="몇시에 하셨나요?"
+                                    />
+                                    <div class="mt-4 text-h7">
+                                      색깔
+                                    </div>
+                                    <v-radio-group
+                                      v-model="input.color"
+                                      class="my-0"
+                                      row
+                                    >
+                                      <template v-for="(color, colorIndex) in colors">
+                                        <v-radio
+                                          :key="`${colorIndex}-color`"
+                                          :label="color.text"
+                                          :value="color.value"
+                                          :color="color.value"
+                                        />
+                                      </template>
+                                    </v-radio-group>
+                                  </v-expansion-panel-content>
+                                </v-expansion-panel>
+                              </v-expansion-panels>
+                            </v-form>
                           </v-card-text>
                           <v-card-actions>
                             <v-spacer />
@@ -237,7 +241,12 @@ export default {
         color: 'purple lighten-1',
         show: false
       },
-      showDetail: false
+      showDetail: false,
+      rules: {
+        required: [
+          v => !!v || '입력해주세요 😉'
+        ]
+      }
     }
   },
   computed: {
@@ -251,8 +260,10 @@ export default {
     }
   },
   watch: {
-    'input.show' (show) {
+    async 'input.show' (show) {
+      await this.$nextTick()
       if (show === true) {
+        this.$refs.form[0].reset()
         this.input.startAt = moment().toDate()
       }
     }
@@ -263,6 +274,12 @@ export default {
   },
   methods: {
     async submitItem () {
+      const valid = await this.$refs.form[0].validate()
+
+      if (!valid) {
+        return
+      }
+
       const { title, description, startAt, color } = this.input
       const date = this.date
 
@@ -295,6 +312,15 @@ export default {
       return moment(value).format('HH시 mm분')
     },
     async deleteItem (item) {
+      const yes = await this.$dialog.confirm({
+        text: '정말 삭제하시겠어요?',
+        showClose: false
+      })
+
+      if (!yes) {
+        return
+      }
+
       const { diaryId } = item
       try {
         await this.$axios.$delete(`/Diary/${diaryId}`)
@@ -305,6 +331,7 @@ export default {
       } catch (e) {
         this.$dialog.notify.error(`에러가 발생했어요 😯 (${e})`)
       }
+      this.$dialog.notify.success('1개의 항목이 삭제되었어요!')
     },
     updateCalendar ({ year, month }) {
       this.date = moment(this.date).year(year).month(month - 1).toDate()
@@ -313,4 +340,8 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+
+::v-deep .v-expansion-panel-content__wrap {
+  padding: 0;
+}
 </style>

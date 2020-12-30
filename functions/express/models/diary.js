@@ -18,7 +18,7 @@ async function fetchItem (user) {
   return items
 }
 
-async function addItem (user, title, description, startAt, dateString, hashtags, color) {
+async function addItem (user, title, startAt, dateString , color, description, hashtags, mediaUrls) {
   const { uid } = user
   const createdAt = Date.now()
   const modifiedAt = null
@@ -30,6 +30,7 @@ async function addItem (user, title, description, startAt, dateString, hashtags,
     hashtags,
     color,
     startAt,
+    mediaUrls,
     createdAt,
     modifiedAt
   })
