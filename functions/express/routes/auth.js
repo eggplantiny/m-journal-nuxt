@@ -1,6 +1,5 @@
 const express = require('express')
-const userController = require('../models/user')
-const authController = require('../models/auth')
+const User = require('../models/user')
 
 const response = require('../helper/response')
 
@@ -26,7 +25,7 @@ router.post('/SignUp',
       return response.errorHandler.needParameter(res, 'dark')
     }
 
-    const uid = await userController.addUser(user, nickName, color, dark)
+    const uid = await User.addUser(user, nickName, color, dark)
     return response.success(res, { uid })
   })
 
@@ -34,7 +33,7 @@ router.get('/CheckUser',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    const { exists, userInfo } = await userController.checkUser(user)
+    const { exists, userInfo } = await User.checkUser(user)
     return response.success(res, { exists, userInfo })
   })
 
