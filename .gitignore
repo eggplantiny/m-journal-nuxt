@@ -72,3 +72,4 @@ frontend/.nuxt
 frontend/.env.development
 frontend/.env.production
 
+.idea
