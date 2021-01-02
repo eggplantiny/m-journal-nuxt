@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <app-bar />
     <v-main class="main">
       <v-container>
         <nuxt />
@@ -9,8 +10,10 @@
 </template>
 
 <script>
+import AppBar from '~/components/organisms/AppBar'
 export default {
-  name: 'AppLayout'
+  name: 'AppLayout',
+  components: { AppBar }
 }
 </script>
 
