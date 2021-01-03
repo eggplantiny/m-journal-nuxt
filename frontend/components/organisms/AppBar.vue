@@ -2,8 +2,8 @@
   <v-app-bar
     app
     dark
+    elevate-on-scroll
     elevation="0"
-    elevate-on-scroll="3"
     color="indigo lighten-1"
   >
     <v-toolbar-title>

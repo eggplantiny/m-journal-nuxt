@@ -5,6 +5,7 @@
         v-model="date"
         color="indigo"
         is-expanded
+        :attributes="attributes"
         @update:from-page="updateCalendar"
       />
     </v-col>
@@ -39,7 +40,9 @@
                     <v-card-title class="pa-0">
                       <v-dialog
                         v-model="input.show"
-                        width="500"
+                        fullscreen
+                        hide-overlay
+                        transition="dialog-bottom-transition"
                       >
                         <template v-slot:activator="{ on }">
                           <v-btn
@@ -55,10 +58,33 @@
                           </v-btn>
                         </template>
                         <v-card flat rounded>
-                          <v-card-title>
-                            기록하기
-                          </v-card-title>
-                          <v-card-text>
+                          <v-toolbar
+                            dark
+                            color="primary"
+                          >
+                            <v-btn
+                              icon
+                              dark
+                              @click="input.show = false"
+                            >
+                              <v-icon>mdi-close</v-icon>
+                            </v-btn>
+                            <v-toolbar-title>
+                              기록하기
+                            </v-toolbar-title>
+                            <v-spacer></v-spacer>
+                            <v-toolbar-items>
+                              <v-btn
+                                icon
+                                @click="submitItem"
+                              >
+                                <v-icon>
+                                  mdi-pencil-outline
+                                </v-icon>
+                              </v-btn>
+                            </v-toolbar-items>
+                          </v-toolbar>
+                          <v-card-text class="pt-4">
                             <v-form
                               ref="form"
                             >
@@ -74,7 +100,7 @@
                               <v-expansion-panels flat>
                                 <v-expansion-panel>
                                   <v-expansion-panel-header class="px-0 py-0">
-                                    자세히 기록하기
+                                    자세히 기록하기 😊
                                   </v-expansion-panel-header>
                                   <v-expansion-panel-content class="px-0">
                                     <v-textarea
@@ -86,43 +112,43 @@
                                       outlined
                                       auto-grow
                                     />
+                                    <v-select
+                                      v-model="input.color"
+                                      :items="colors"
+                                      :color="input.color"
+                                      class="mt-4"
+                                      append-icon="mdi-palette"
+                                      menu-props="auto"
+                                      label="색깔"
+                                      hide-details
+                                      solo
+                                      flat
+                                      dense
+                                      outlined
+                                      single-line
+                                    >
+                                      <template v-slot:item="{ item }">
+                                        <div class="d-flex justify-space-between align-center full-width">
+                                          <div>
+                                            {{ item.text }}
+                                          </div>
+                                          <v-avatar
+                                            :color="item.value"
+                                            size="24"
+                                          />
+                                        </div>
+                                      </template>
+                                    </v-select>
                                     <b-timepicker
                                       v-model="input.startAt"
                                       class="mt-4"
                                       placeholder="몇시에 하셨나요?"
                                     />
-                                    <div class="mt-4 text-h7">
-                                      색깔
-                                    </div>
-                                    <v-radio-group
-                                      v-model="input.color"
-                                      class="my-0"
-                                      row
-                                    >
-                                      <template v-for="(color, colorIndex) in colors">
-                                        <v-radio
-                                          :key="`${colorIndex}-color`"
-                                          :label="color.text"
-                                          :value="color.value"
-                                          :color="color.value"
-                                        />
-                                      </template>
-                                    </v-radio-group>
                                   </v-expansion-panel-content>
                                 </v-expansion-panel>
                               </v-expansion-panels>
                             </v-form>
                           </v-card-text>
-                          <v-card-actions>
-                            <v-spacer />
-                            <v-btn
-                              color="primary"
-                              text
-                              @click="submitItem"
-                            >
-                              입력
-                            </v-btn>
-                          </v-card-actions>
                         </v-card>
                       </v-dialog>
                     </v-card-title>
@@ -250,6 +276,20 @@ export default {
     }
   },
   computed: {
+    attributes () {
+      const { items } = this
+      return [
+        {
+          bar: {
+            style: {
+              height: '4px',
+              borderRadius: '3px'
+            }
+          },
+          dates: items.filter(item => item.startAt).map(item => moment(item.startAt).toDate())
+        }
+      ]
+    },
     targetItems () {
       const { items, date } = this
       const dateString = moment(date).format('YYYY-MM-DD')
@@ -265,6 +305,7 @@ export default {
       if (show === true) {
         this.$refs.form[0].reset()
         this.input.startAt = moment().toDate()
+        this.input.color = 'purple lighten-1'
       }
     }
   },
@@ -280,15 +321,17 @@ export default {
         return
       }
 
-      const { title, description, startAt, color } = this.input
-      const date = this.date
+      const { title, description, color } = this.input
+      let { startAt } = this.input
+
+      startAt = moment(this.date).toDate()
 
       const item = {
         title,
         description,
         startAt,
         color,
-        dateString: moment(date).format('YYYY-MM-DD')
+        dateString: moment(startAt).format('YYYY-MM-DD')
       }
 
       let diaryId = null
@@ -343,5 +386,9 @@ export default {
 
 ::v-deep .v-expansion-panel-content__wrap {
   padding: 0;
+}
+
+::v-deep .timepicker {
+  border-radius: 4px;
 }
 </style>
