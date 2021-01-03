@@ -5,7 +5,7 @@
         outlined
         x-large
         block
-        color="purple lighten-1"
+        color="indigo lighten-1"
         @click="startApp"
       >
         시작하기

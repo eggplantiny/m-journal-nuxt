@@ -5,6 +5,7 @@
         v-model="date"
         color="indigo"
         is-expanded
+        :attributes="attributes"
         @update:from-page="updateCalendar"
       />
     </v-col>
@@ -58,7 +59,7 @@
                           <v-card-title>
                             기록하기
                           </v-card-title>
-                          <v-card-text>
+                          <v-card-text class="py-0">
                             <v-form
                               ref="form"
                             >
@@ -86,28 +87,38 @@
                                       outlined
                                       auto-grow
                                     />
+                                    <v-select
+                                      v-model="input.color"
+                                      :items="colors"
+                                      :color="input.color"
+                                      class="mt-4"
+                                      append-icon="mdi-palette"
+                                      menu-props="auto"
+                                      label="색깔"
+                                      hide-details
+                                      solo
+                                      flat
+                                      dense
+                                      outlined
+                                      single-line
+                                    >
+                                      <template v-slot:item="{ item }">
+                                        <div class="d-flex justify-space-between align-center full-width">
+                                          <div>
+                                            {{ item.text }}
+                                          </div>
+                                          <v-avatar
+                                            :color="item.value"
+                                            size="24"
+                                          />
+                                        </div>
+                                      </template>
+                                    </v-select>
                                     <b-timepicker
                                       v-model="input.startAt"
                                       class="mt-4"
                                       placeholder="몇시에 하셨나요?"
                                     />
-                                    <div class="mt-4 text-h7">
-                                      색깔
-                                    </div>
-                                    <v-radio-group
-                                      v-model="input.color"
-                                      class="my-0"
-                                      row
-                                    >
-                                      <template v-for="(color, colorIndex) in colors">
-                                        <v-radio
-                                          :key="`${colorIndex}-color`"
-                                          :label="color.text"
-                                          :value="color.value"
-                                          :color="color.value"
-                                        />
-                                      </template>
-                                    </v-radio-group>
                                   </v-expansion-panel-content>
                                 </v-expansion-panel>
                               </v-expansion-panels>
@@ -250,6 +261,20 @@ export default {
     }
   },
   computed: {
+    attributes () {
+      const { items } = this
+      return [
+        {
+          bar: {
+            style: {
+              height: '4px',
+              borderRadius: '3px'
+            }
+          },
+          dates: items.filter(item => item.startAt).map(item => moment(item.startAt).toDate())
+        }
+      ]
+    },
     targetItems () {
       const { items, date } = this
       const dateString = moment(date).format('YYYY-MM-DD')

@@ -11,15 +11,19 @@
 }
 
 .v-card__title {
-  font-family: "Do Hyeon", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .v-card__text {
-  font-family: "Do Hyeon", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .v-timeline-item__inner-dot {
   transition: width 150ms, height 150ms, margin 150ms;
+}
+
+.full-width {
+  width: 100%;
 }
 
 /*# sourceMappingURL=variables.css.map */
