@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2020-12-31__1_51__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2020-12-31__1_51__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_01_01_10_56___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_01_01_10_56___Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_01_01_10_57___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_01_01_10_57___Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/variables.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/variables.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/variables.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/organisms/AppBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/organisms/AppBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="front/diaryLayout" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,7 +61,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
     <property name="vuejs.nuxt.types-notification-shown" value="true" />
@@ -107,6 +104,8 @@
       <workItem from="1609662239681" duration="267000" />
       <workItem from="1609663109767" duration="104000" />
       <workItem from="1609663251672" duration="2660000" />
+      <workItem from="1609675447495" duration="8000" />
+      <workItem from="1609675468751" duration="1874000" />
     </task>
     <servers />
   </component>

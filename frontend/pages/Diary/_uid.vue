@@ -40,7 +40,9 @@
                     <v-card-title class="pa-0">
                       <v-dialog
                         v-model="input.show"
-                        width="500"
+                        fullscreen
+                        hide-overlay
+                        transition="dialog-bottom-transition"
                       >
                         <template v-slot:activator="{ on }">
                           <v-btn
@@ -56,10 +58,33 @@
                           </v-btn>
                         </template>
                         <v-card flat rounded>
-                          <v-card-title>
-                            기록하기
-                          </v-card-title>
-                          <v-card-text class="py-0">
+                          <v-toolbar
+                            dark
+                            color="primary"
+                          >
+                            <v-btn
+                              icon
+                              dark
+                              @click="input.show = false"
+                            >
+                              <v-icon>mdi-close</v-icon>
+                            </v-btn>
+                            <v-toolbar-title>
+                              기록하기
+                            </v-toolbar-title>
+                            <v-spacer></v-spacer>
+                            <v-toolbar-items>
+                              <v-btn
+                                icon
+                                @click="submitItem"
+                              >
+                                <v-icon>
+                                  mdi-pencil-outline
+                                </v-icon>
+                              </v-btn>
+                            </v-toolbar-items>
+                          </v-toolbar>
+                          <v-card-text class="pt-4">
                             <v-form
                               ref="form"
                             >
@@ -75,7 +100,7 @@
                               <v-expansion-panels flat>
                                 <v-expansion-panel>
                                   <v-expansion-panel-header class="px-0 py-0">
-                                    자세히 기록하기
+                                    자세히 기록하기 😊
                                   </v-expansion-panel-header>
                                   <v-expansion-panel-content class="px-0">
                                     <v-textarea
@@ -124,16 +149,6 @@
                               </v-expansion-panels>
                             </v-form>
                           </v-card-text>
-                          <v-card-actions>
-                            <v-spacer />
-                            <v-btn
-                              color="primary"
-                              text
-                              @click="submitItem"
-                            >
-                              입력
-                            </v-btn>
-                          </v-card-actions>
                         </v-card>
                       </v-dialog>
                     </v-card-title>
@@ -290,6 +305,7 @@ export default {
       if (show === true) {
         this.$refs.form[0].reset()
         this.input.startAt = moment().toDate()
+        this.input.color = 'purple lighten-1'
       }
     }
   },
@@ -305,15 +321,17 @@ export default {
         return
       }
 
-      const { title, description, startAt, color } = this.input
-      const date = this.date
+      const { title, description, color } = this.input
+      let { startAt } = this.input
+
+      startAt = moment(this.date).toDate()
 
       const item = {
         title,
         description,
         startAt,
         color,
-        dateString: moment(date).format('YYYY-MM-DD')
+        dateString: moment(startAt).format('YYYY-MM-DD')
       }
 
       let diaryId = null
@@ -368,5 +386,9 @@ export default {
 
 ::v-deep .v-expansion-panel-content__wrap {
   padding: 0;
+}
+
+::v-deep .timepicker {
+  border-radius: 4px;
 }
 </style>
