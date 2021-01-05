@@ -204,7 +204,7 @@
 import moment from 'moment'
 
 export default {
-  name: 'UserCalendar',
+  name: 'Didary',
   middleware: ['auth', 'checkAccount'],
   layout: 'app',
   data () {
@@ -321,10 +321,10 @@ export default {
         return
       }
 
+      const date = moment(this.date)
       const { title, description, color } = this.input
-      let { startAt } = this.input
-
-      startAt = moment(this.date).toDate()
+      const startAt = moment(this.input.startAt).year(date.year()).month(date.month()).date(date.date())
+      await this.$nextTick()
 
       const item = {
         title,
@@ -338,7 +338,7 @@ export default {
       try {
         diaryId = await this.$axios.$post('/Diary', item).then(res => res.result)
       } catch (e) {
-        this.$dialog.notify.error(`에러가 발생했어요 😯 (${e})`)
+        return this.$dialog.notify.error(`에러가 발생했어요 😯 (${e})`)
       }
 
       this.items.push({
