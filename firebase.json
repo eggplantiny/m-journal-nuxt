@@ -22,7 +22,10 @@
       {
         "source": "**",
         "destination": "/index.html",
-        "function": "app"
+        "function": "app",
+        "run": {
+          "region": "asia-northeast3"
+        }
       }
     ]
   },
