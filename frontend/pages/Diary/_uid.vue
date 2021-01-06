@@ -40,9 +40,10 @@
                     <v-card-title class="pa-0">
                       <v-dialog
                         v-model="input.show"
-                        fullscreen
+                        max-width="500"
                         hide-overlay
-                        transition="dialog-bottom-transition"
+                        :fullscreen="$vuetify.breakpoint.xsOnly"
+                        :transition="$vuetify.breakpoint.xsOnly ? 'dialog-bottom-transition' : 'fade-transition'"
                       >
                         <template v-slot:activator="{ on }">
                           <v-btn
@@ -170,7 +171,7 @@
                         <v-fab-transition>
                           <v-card-actions v-show="hover">
                             <v-spacer />
-                            <v-btn icon color="red" @click="deleteItem(item)">
+                            <v-btn icon dark @click="deleteItem(item)">
                               <v-icon>
                                 mdi-delete
                               </v-icon>
