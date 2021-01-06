@@ -313,6 +313,18 @@ export default {
     const { result } = await this.$axios.$get('/Diary')
     this.items.push(...result)
   },
+  beforeRouteLeave (to, from, next) {
+    if (this.input.show === true) {
+      this.input.show = false
+      return next(false)
+    }
+
+    if (Object.keys(this.$route.query).length !== 0) {
+      next()
+    } else {
+      next(false)
+    }
+  },
   methods: {
     async submitItem () {
       const valid = await this.$refs.form[0].validate()
