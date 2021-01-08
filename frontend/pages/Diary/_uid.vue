@@ -20,23 +20,23 @@
           hide-on-leave
         >
           <template
-            v-for="(item, index) in targetItems"
+            v-for="(targetItem, index) in targetItems"
           >
             <v-hover
               v-slot:default="{ hover }"
               :key="index"
             >
               <v-timeline-item
-                :color="item.color"
+                :color="targetItem.color"
                 :small="!hover"
               >
                 <v-card
                   flat
                   :elevation="hover ? 3 : 0"
-                  :color="hover ? item.color : 'white'"
+                  :color="hover ? targetItem.color : 'white'"
                   :dark="hover"
                 >
-                  <template v-if="item.type === 'button'">
+                  <template v-if="targetItem.type === 'button'">
                     <v-card-title class="pa-0">
                       <v-dialog
                         v-model="input.show"
@@ -73,7 +73,7 @@
                             <v-toolbar-title>
                               기록하기
                             </v-toolbar-title>
-                            <v-spacer></v-spacer>
+                            <v-spacer />
                             <v-toolbar-items>
                               <v-btn
                                 icon
@@ -158,20 +158,20 @@
                     <v-row no-gutters>
                       <v-col cols="10">
                         <v-card-title>
-                          {{ item.title }}
+                          {{ targetItem.title }}
                         </v-card-title>
                         <v-card-subtitle class="py-0">
-                          {{ formatTime(item.startAt) }}
+                          {{ formatTime(targetItem.startAt) }}
                         </v-card-subtitle>
                         <v-card-text>
-                          {{ item.description }}
+                          {{ targetItem.description }}
                         </v-card-text>
                       </v-col>
                       <v-col cols="2" align-self="end">
                         <v-fab-transition>
                           <v-card-actions v-show="hover">
                             <v-spacer />
-                            <v-btn icon dark @click="deleteItem(item)">
+                            <v-btn icon dark @click="deleteItem(targetItem)">
                               <v-icon>
                                 mdi-delete
                               </v-icon>
