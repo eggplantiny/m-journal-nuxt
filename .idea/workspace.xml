@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/mixins/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/components/molecules/Diary/DiaryItem.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/organisms/Diary/AddItemDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/organisms/Diary/AddItemDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/mixins/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/mixins/model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/organisms/Diary/AddItemDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/molecules/Diary/AddItemDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -72,6 +71,7 @@
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\frontend\components\molecules" />
       <recent name="$PROJECT_DIR$/functions" />
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions\express" />
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions\utils" />
@@ -109,7 +109,7 @@
       <workItem from="1609827272052" duration="2576000" />
       <workItem from="1609934507408" duration="932000" />
       <workItem from="1610107523939" duration="815000" />
-      <workItem from="1610171289828" duration="4547000" />
+      <workItem from="1610171289828" duration="7321000" />
     </task>
     <servers />
   </component>

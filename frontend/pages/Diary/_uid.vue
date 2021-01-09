@@ -30,55 +30,12 @@
                 :color="targetItem.color"
                 :small="!hover"
               >
-                <v-card
-                  flat
-                  :elevation="hover ? 3 : 0"
-                  :color="hover ? targetItem.color : 'white'"
-                  :dark="hover"
-                >
-                  <template v-if="targetItem.type === 'button'">
-                    <v-card-title class="pa-0">
-                      <v-btn
-                        block
-                        text
-                        rounded
-                        large
-                        @click="dialogs.addItem = true"
-                      >
-                        <v-icon>
-                          mdi-plus
-                        </v-icon>
-                      </v-btn>
-                    </v-card-title>
-                  </template>
-                  <template v-else>
-                    <v-row no-gutters>
-                      <v-col cols="10">
-                        <v-card-title>
-                          {{ targetItem.title }}
-                        </v-card-title>
-                        <v-card-subtitle class="py-0">
-                          {{ formatTime(targetItem.startAt) }}
-                        </v-card-subtitle>
-                        <v-card-text>
-                          {{ targetItem.description }}
-                        </v-card-text>
-                      </v-col>
-                      <v-col cols="2" align-self="end">
-                        <v-fab-transition>
-                          <v-card-actions v-show="hover">
-                            <v-spacer />
-                            <v-btn icon dark @click="deleteItem(targetItem)">
-                              <v-icon>
-                                mdi-delete
-                              </v-icon>
-                            </v-btn>
-                          </v-card-actions>
-                        </v-fab-transition>
-                      </v-col>
-                    </v-row>
-                  </template>
-                </v-card>
+                <diary-item
+                  :hover="hover"
+                  :item="targetItem"
+                  @add="dialogs.addItem = true"
+                  @delete="deleteItem(targetItem)"
+                />
               </v-timeline-item>
             </v-hover>
           </template>
@@ -105,12 +62,14 @@
 
 <script>
 import moment from 'moment'
-import AddItemDialog from '@/components/organisms/Diary/AddItemDialog'
+import AddItemDialog from '@/components/molecules/Diary/AddItemDialog'
+import DiaryItem from '@/components/molecules/Diary/DiaryItem'
 
 export default {
-  name: 'Didary',
+  name: 'Diary',
   components: {
-    AddItemDialog
+    AddItemDialog,
+    DiaryItem
   },
   middleware: ['auth', 'checkAccount'],
   layout: 'app',
@@ -207,8 +166,8 @@ export default {
     this.items.push(...result)
   },
   beforeRouteLeave (to, from, next) {
-    if (this.input.show === true) {
-      this.input.show = false
+    if (this.dialogs.addItem === true) {
+      this.dialogs.addItem = false
       return next(false)
     }
 
@@ -246,9 +205,6 @@ export default {
 
       this.dialogs.addItem = false
       this.$refs.addItemDialog.clear()
-    },
-    formatTime (value) {
-      return moment(value).format('HH시 mm분')
     },
     async deleteItem (item) {
       const yes = await this.$dialog.confirm({

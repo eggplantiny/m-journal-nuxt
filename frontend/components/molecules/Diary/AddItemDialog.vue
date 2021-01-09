@@ -103,7 +103,7 @@
 </template>
 
 <script>
-import { model } from '@/mixins'
+import { model } from '~/mixins'
 
 export default {
   name: 'AddItemDialog',
@@ -165,20 +165,10 @@ export default {
       }
     }
   },
-  computed: {
-    model: {
-      set (value) {
-        this.$emit('value', value)
-      },
-      get () {
-        return this.$
-      }
-    }
-  },
   methods: {
     async submitItem () {
       const { title, description, startAt, color } = this.input
-      const valid = await this.$refs.form[0].validate()
+      const valid = await this.$refs.form.validate()
 
       if (!valid) {
         return
@@ -192,7 +182,7 @@ export default {
       this.input.startAt = new Date()
       this.input.color = 'purple lighten-1'
 
-      this.$refs.form[0].reset()
+      this.$refs.form.reset()
     }
   }
 }
