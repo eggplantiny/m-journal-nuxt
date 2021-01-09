@@ -1,24 +1,11 @@
 <template>
   <v-dialog
-    v-model="input.show"
+    v-model="model"
     max-width="500"
     hide-overlay
     :fullscreen="$vuetify.breakpoint.xsOnly"
     :transition="$vuetify.breakpoint.xsOnly ? 'dialog-bottom-transition' : 'fade-transition'"
   >
-    <template v-slot:activator="{ on }">
-      <v-btn
-        block
-        text
-        rounded
-        large
-        v-on="on"
-      >
-        <v-icon>
-          mdi-plus
-        </v-icon>
-      </v-btn>
-    </template>
     <v-card flat rounded>
       <v-toolbar
         dark
@@ -27,7 +14,7 @@
         <v-btn
           icon
           dark
-          @click="input.show = false"
+          @click="model = false"
         >
           <v-icon>mdi-close</v-icon>
         </v-btn>
@@ -116,10 +103,11 @@
 </template>
 
 <script>
-import moment from 'moment'
+import { model } from '@/mixins'
 
 export default {
   name: 'AddItemDialog',
+  mixins: [model],
   data () {
     return {
       colors: [
@@ -167,9 +155,8 @@ export default {
       input: {
         title: '',
         description: '',
-        startAt: moment().toDate(),
-        color: 'purple lighten-1',
-        show: false
+        startAt: new Date(),
+        color: 'purple lighten-1'
       },
       rules: {
         required: [
@@ -189,15 +176,23 @@ export default {
     }
   },
   methods: {
-    submitItem () {
+    async submitItem () {
       const { title, description, startAt, color } = this.input
-      this.$emit('submit', { title, description, startAt, color })
+      const valid = await this.$refs.form[0].validate()
+
+      if (!valid) {
+        return
+      }
+
+      return this.$emit('submit', { title, description, startAt, color })
     },
     clear () {
       this.input.title = ''
       this.input.description = ''
       this.input.startAt = new Date()
       this.input.color = 'purple lighten-1'
+
+      this.$refs.form[0].reset()
     }
   }
 }
