@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/components/organisms/Diary/AddItemDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/mixins/model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_01_01_10_56___Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2021_01_01_10_56_오후_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_01_01_10_57___Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021_01_01_10_57_오후_[Default_Changelist]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/middleware/diary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/middleware/diary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +110,8 @@
       <workItem from="1609675468751" duration="2743000" />
       <workItem from="1609827272052" duration="2576000" />
       <workItem from="1609934507408" duration="932000" />
+      <workItem from="1610107523939" duration="815000" />
+      <workItem from="1610171289828" duration="2670000" />
     </task>
     <servers />
   </component>
