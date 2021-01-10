@@ -12,6 +12,9 @@ export default {
   mounted () {
     const { uid } = this.$store.getters['auth/user']
     this.$router.replace(`/Diary/${uid}`)
+  },
+  meta: {
+    title: '다이어리'
   }
 }
 </script>

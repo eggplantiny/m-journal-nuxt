@@ -58,6 +58,11 @@ export default {
       this.$dialog.notify.success(`반갑습니다 ${nickName} 님 😀`)
       this.$router.push(`/Diary/${uid}`)
     }
+  },
+  head () {
+    return {
+      title: '회원가입'
+    }
   }
 }
 </script>

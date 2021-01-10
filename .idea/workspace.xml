@@ -5,10 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/components/molecules/Diary/DiaryItem.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/organisms/Diary/AddItemDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/molecules/Diary/AddItemDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/molecules/Diary/AddItemDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/molecules/Diary/AddItemDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/molecules/Diary/DiaryItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/molecules/Diary/DiaryItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/organisms/AppBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/organisms/AppBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/a/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/a/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/a/SignUp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/a/SignUp.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/a/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/a/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/static/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/static/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/static/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/static/v.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/static/vuetify-logo.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -49,7 +59,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/functions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/static" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -67,10 +77,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\frontend\static" />
       <recent name="$PROJECT_DIR$/functions" />
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\frontend\static" />
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\frontend\components\molecules" />
       <recent name="$PROJECT_DIR$/functions" />
       <recent name="C:\Users\Administrator\Development\workspace\vue2\m-journal-nuxt\functions\express" />

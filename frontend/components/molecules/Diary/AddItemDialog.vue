@@ -36,6 +36,7 @@
       <v-card-text class="pt-4">
         <v-form
           ref="form"
+          lazy-validation
         >
           <v-text-field
             v-model="input.title"
@@ -156,7 +157,7 @@ export default {
         title: '',
         description: '',
         startAt: new Date(),
-        color: 'purple lighten-1'
+        color: 'indigo lighten-2'
       },
       rules: {
         required: [
@@ -177,12 +178,12 @@ export default {
       return this.$emit('submit', { title, description, startAt, color })
     },
     clear () {
+      this.$refs.form.reset()
+
       this.input.title = ''
       this.input.description = ''
       this.input.startAt = new Date()
-      this.input.color = 'purple lighten-1'
-
-      this.$refs.form.reset()
+      this.input.color = 'indigo lighten-2'
     }
   }
 }
