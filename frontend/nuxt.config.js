@@ -64,6 +64,15 @@ export default {
     'vuetify-dialog/nuxt'
   ],
 
+  pwa: {
+    meta: {
+      theme_color: '#5C6BC0',
+      name: '하루일기',
+      author: 'eggplantiny',
+      lang: 'kr'
+    }
+  },
+
   //  Firebase : https://firebase.nuxtjs.org/guide/getting-started
   firebase: {
     config: {
