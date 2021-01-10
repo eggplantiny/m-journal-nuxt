@@ -34,7 +34,7 @@
           </v-card-text>
         </v-col>
         <v-col cols="2" align-self="end">
-          <v-fab-transition>
+          <v-fade-transition>
             <v-card-actions v-show="hover">
               <v-spacer />
               <v-btn icon dark @click="deleteItem">
@@ -43,7 +43,7 @@
                 </v-icon>
               </v-btn>
             </v-card-actions>
-          </v-fab-transition>
+          </v-fade-transition>
         </v-col>
       </v-row>
     </template>

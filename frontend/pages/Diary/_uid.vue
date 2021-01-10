@@ -33,7 +33,7 @@
                 <diary-item
                   :hover="hover"
                   :item="targetItem"
-                  @add="dialogs.addItem = true"
+                  @add="openDialog"
                   @delete="deleteItem(targetItem)"
                 />
               </v-timeline-item>
@@ -73,65 +73,25 @@ export default {
   },
   middleware: ['auth', 'checkAccount'],
   layout: 'app',
-  data () {
-    const date = moment().toDate()
+  async asyncData ({ $axios, store }) {
+    const { result } = await $axios.$get('/Diary')
+
+    const items = [{
+      type: 'button',
+      color: 'red lighten-1'
+    }]
+    const userInfo = store.getters['auth/user'] || { nickName: '아무개님' }
+
+    items.push(...result)
+
     return {
-      hello: 'World',
-      date,
-      items: [
-        {
-          type: 'button',
-          color: 'red lighten-1'
-        }
-      ],
-      colors: [
-        {
-          text: '보라',
-          value: 'purple lighten-1'
-        },
-        {
-          text: '파랑',
-          value: 'blue lighten-1'
-        },
-        {
-          text: '빨강',
-          value: 'red lighten-1'
-        },
-        {
-          text: '노랑',
-          value: 'yellow lighten-1'
-        },
-        {
-          text: '인디고',
-          value: 'indigo lighten-2'
-        },
-        {
-          text: '초록',
-          value: 'green lighten-1'
-        },
-        {
-          text: '회색',
-          value: 'grey lighten-1'
-        },
-        {
-          text: '검정',
-          value: 'black lighten-1'
-        },
-        {
-          text: '분홍',
-          value: '#f5487f'
-        },
-        {
-          text: '베이지',
-          value: '#D4B886'
-        }
-      ],
-      showDetail: false,
-      rules: {
-        required: [
-          v => !!v || '입력해주세요 😉'
-        ]
-      },
+      items,
+      userInfo
+    }
+  },
+  data () {
+    return {
+      date: new Date(),
       dialogs: {
         addItem: false
       }
@@ -160,10 +120,6 @@ export default {
           .format('YYYY-MM-DD') === dateString || item.type === 'button'
       ).sort((a, b) => moment(a.startAt).isBefore(b.startAt) ? 1 : -1)
     }
-  },
-  async mounted () {
-    const { result } = await this.$axios.$get('/Diary')
-    this.items.push(...result)
   },
   beforeRouteLeave (to, from, next) {
     if (this.dialogs.addItem === true) {
@@ -230,7 +186,19 @@ export default {
     },
     updateCalendar ({ year, month }) {
       this.date = moment(this.date).year(year).month(month - 1).toDate()
+    },
+    openDialog () {
+      this.dialogs.addItem = true
     }
+  },
+  head () {
+    const title = `${this.userInfo.nickName} 님의 하루일기`
+    return {
+      title
+    }
+  },
+  mounted () {
+    console.log(this.$metaInfo.title)
   }
 }
 </script>

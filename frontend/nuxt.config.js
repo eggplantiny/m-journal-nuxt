@@ -5,14 +5,16 @@ require('dotenv').config({
   path: `.env.${nodeEnv}`
 })
 
+const APP_TITLE = '하루일기'
+
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - m-journal',
-    title: 'm-journal',
+    titleTemplate: `%s - ${APP_TITLE}`,
+    title: APP_TITLE,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

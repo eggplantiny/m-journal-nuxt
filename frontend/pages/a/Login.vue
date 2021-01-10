@@ -58,6 +58,11 @@ export default {
         return this.$dialog.notify.error(e)
       }
     }
+  },
+  head () {
+    return {
+      title: '로그인'
+    }
   }
 }
 </script>
