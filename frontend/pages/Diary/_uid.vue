@@ -128,6 +128,7 @@ export default {
     }
 
     if (Object.keys(this.$route.query).length !== 0) {
+      //  TODO 뒤로가기 관련 기능 개발 필요
       next()
     } else {
       next(false)

@@ -7,7 +7,9 @@
     color="indigo lighten-1"
   >
     <div class="app-bar">
-      <v-app-bar-nav-icon />
+      <v-app-bar-nav-icon
+        @click="openDialog"
+      />
       <span class="app-bar-title">
         <template v-if="userInfo === null">
           하루일기
@@ -26,6 +28,11 @@ export default {
   computed: {
     userInfo () {
       return this.$store.getters['auth/user'] || null
+    }
+  },
+  methods: {
+    openDialog () {
+      this.$store.dispatch('drawer/open')
     }
   }
 }

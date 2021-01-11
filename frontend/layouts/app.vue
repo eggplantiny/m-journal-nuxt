@@ -1,6 +1,7 @@
 <template>
-  <v-app>
+  <v-app app>
     <app-bar />
+    <drawer-menu />
     <v-main class="main">
       <v-container>
         <nuxt />
@@ -10,10 +11,11 @@
 </template>
 
 <script>
-import AppBar from '~/components/organisms/AppBar'
+import AppBar from '@/components/organisms/AppBar'
+import DrawerMenu from '@/components/organisms/DrawerMenu'
 export default {
   name: 'AppLayout',
-  components: { AppBar }
+  components: { DrawerMenu, AppBar }
 }
 </script>
 
