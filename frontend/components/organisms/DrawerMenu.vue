@@ -14,6 +14,7 @@
         v-for="item in items"
         :key="item.title"
         link
+        @click="clickItem(item)"
       >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
@@ -27,7 +28,7 @@
 
     <template v-slot:append>
       <div class="pa-2">
-        <v-btn block>
+        <v-btn block @click="logout">
           로그아웃
         </v-btn>
       </div>
@@ -36,13 +37,20 @@
 </template>
 
 <script>
+function close () {
+  window.open('', '_self', '')
+  window.close()
+  return false
+}
+
 export default {
   name: 'DrawerMenu',
   data () {
     return {
       items: [
-        { title: '일기 쓰기', icon: 'mdi-pencil-outline' },
-        { title: '설정', icon: 'mdi-cog' }
+        { title: '일기 쓰기', icon: 'mdi-pencil-outline', path: '/Diary' },
+        { title: '설정', icon: 'mdi-cog', path: '/Setting' },
+        { title: '창 닫기', icon: 'mdi-close', path: 'close' }
       ]
     }
   },
@@ -58,6 +66,21 @@ export default {
           this.$store.dispatch('drawer/close')
         }
       }
+    }
+  },
+  methods: {
+    clickItem ({ path }) {
+      this.model = false
+      if (path === 'close') {
+        // return window.close()
+        return close()
+      }
+      this.$router.push(path)
+    },
+    async logout () {
+      this.model = false
+      await this.$store.dispatch('auth/logout')
+      return this.$router.push('/a/Login')
     }
   }
 }

@@ -36,6 +36,10 @@ export const actions = {
       commit('FETCH_USER', userInfo)
     }
     return { userInfo, exists }
+  },
+  async logout ({ commit }) {
+    await this.$fire.auth.signOut()
+    commit('FETCH_USER', null)
   }
 }
 
