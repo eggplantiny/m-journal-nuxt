@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/components/organisms/DrawerMenu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/store/drawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/molecules/Diary/AddItemDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/molecules/Diary/AddItemDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/organisms/AppBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/organisms/AppBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/layouts/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/layouts/app.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +114,7 @@
       <workItem from="1609934507408" duration="932000" />
       <workItem from="1610107523939" duration="815000" />
       <workItem from="1610171289828" duration="7321000" />
+      <workItem from="1610368044293" duration="4118000" />
     </task>
     <servers />
   </component>
