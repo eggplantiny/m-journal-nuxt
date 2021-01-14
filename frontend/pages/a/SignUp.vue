@@ -55,8 +55,8 @@ export default {
       }
 
       const { uid } = await this.$axios.post('/auth/SignUp', { nickName, dark, color }).then(({ data }) => data.result)
-      this.$dialog.notify.success(`반갑습니다 ${nickName} 님 😀`)
-      this.$router.push(`/Diary/${uid}`)
+      this.$dialog.notify.success(`반갑습니다 ${nickName} 님 😀`).then(() => {})
+      return this.$router.replace(`/Diary/${uid}`)
     }
   },
   head () {

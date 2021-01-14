@@ -1,6 +1,10 @@
 <template>
   <v-row justify="center">
-    <v-col cols="12" sm="12" class="py-0">
+    <v-col
+      cols="12"
+      sm="12"
+      class="py-0 diary-container"
+    >
       <vc-date-picker
         v-model="date"
         color="indigo"
@@ -9,7 +13,12 @@
         @update:from-page="updateCalendar"
       />
     </v-col>
-    <v-col cols="12" sm="12" class="py-0">
+    <v-col
+      v-if="fetched"
+      cols="12"
+      sm="12"
+      class="py-0 diary-container"
+    >
       <v-timeline
         dense
         clipped
@@ -73,31 +82,20 @@ export default {
   },
   middleware: ['auth', 'checkAccount'],
   layout: 'app',
-  async asyncData ({ $axios, store }) {
-    const { result } = await $axios.$get('/Diary')
-
-    const items = [{
-      type: 'button',
-      color: 'red lighten-1'
-    }]
-    const userInfo = store.getters['auth/user'] || { nickName: '아무개님' }
-
-    items.push(...result)
-
-    return {
-      items,
-      userInfo
-    }
-  },
   data () {
     return {
       date: new Date(),
       dialogs: {
         addItem: false
-      }
+      },
+      items: [],
+      fetched: false
     }
   },
   computed: {
+    userInfo () {
+      return this.$store.getters['auth/user'] || { nickName: '아무개님' }
+    },
     attributes () {
       const { items } = this
       return [
@@ -121,17 +119,36 @@ export default {
       ).sort((a, b) => moment(a.startAt).isBefore(b.startAt) ? 1 : -1)
     }
   },
-  beforeRouteLeave (to, from, next) {
+  async beforeMount () {
+    this.fetched = false
+    const { result } = await this.$axios.$get('/Diary')
+
+    const items = [{
+      type: 'button',
+      color: 'red lighten-1'
+    }]
+
+    this.items.splice(0, this.items.length)
+    this.items.push(...items, ...result)
+
+    this.fetched = true
+
+    window.addEventListener('beforeunload', (event) => {
+      if (this.dialogs.addItem === true) {
+        this.dialogs.addItem = false
+        event.returnValue = undefined
+      }
+    })
+  },
+  beforeDestroy () {
+    window.removeEventListener('beforeunload', () => {})
+  },
+  beforeRouteLeave (to, before, next) {
     if (this.dialogs.addItem === true) {
       this.dialogs.addItem = false
-      return next(false)
-    }
-
-    if (Object.keys(this.$route.query).length !== 0) {
-      //  TODO 뒤로가기 관련 기능 개발 필요
-      next()
-    } else {
       next(false)
+    } else {
+      next()
     }
   },
   methods: {
@@ -193,13 +210,11 @@ export default {
     }
   },
   head () {
-    const title = `${this.userInfo.nickName} 님의 하루일기`
+    const userInfo = this.userInfo || { nickName: '아무개님' }
+    const title = `${userInfo.nickName} 님의 하루일기`
     return {
       title
     }
-  },
-  mounted () {
-    console.log(this.$metaInfo.title)
   }
 }
 </script>
@@ -211,5 +226,9 @@ export default {
 
 ::v-deep .timepicker {
   border-radius: 4px;
+}
+
+.diary-container {
+  width: 100%;
 }
 </style>
