@@ -41,19 +41,13 @@
 </template>
 
 <script>
-function close () {
-  self.opener = self
-  window.close()
-}
-
 export default {
   name: 'DrawerMenu',
   data () {
     return {
       items: [
         { title: '일기 쓰기', icon: 'mdi-pencil-outline', path: '/Diary' },
-        { title: '설정', icon: 'mdi-cog', path: '/Setting' },
-        { title: '창 닫기', icon: 'mdi-close', path: 'close' }
+        { title: '설정', icon: 'mdi-cog', path: '/Setting' }
       ]
     }
   },
@@ -74,10 +68,6 @@ export default {
   methods: {
     clickItem ({ path }) {
       this.model = false
-      if (path === 'close') {
-        // return window.close()
-        return close()
-      }
       this.$router.push(path)
     },
     async logout () {

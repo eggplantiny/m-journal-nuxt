@@ -14,6 +14,7 @@
       />
     </v-col>
     <v-col
+      v-if="fetched"
       cols="12"
       sm="12"
       class="py-0 diary-container"
@@ -81,31 +82,20 @@ export default {
   },
   middleware: ['auth', 'checkAccount'],
   layout: 'app',
-  async asyncData ({ $axios, store }) {
-    const { result } = await $axios.$get('/Diary')
-
-    const items = [{
-      type: 'button',
-      color: 'red lighten-1'
-    }]
-    const userInfo = store.getters['auth/user'] || { nickName: '아무개님' }
-
-    items.push(...result)
-
-    return {
-      items,
-      userInfo
-    }
-  },
   data () {
     return {
       date: new Date(),
       dialogs: {
         addItem: false
-      }
+      },
+      items: [],
+      fetched: false
     }
   },
   computed: {
+    userInfo () {
+      return this.$store.getters['auth/user'] || { nickName: '아무개님' }
+    },
     attributes () {
       const { items } = this
       return [
@@ -129,17 +119,37 @@ export default {
       ).sort((a, b) => moment(a.startAt).isBefore(b.startAt) ? 1 : -1)
     }
   },
-  created () {
-    const backButtonRouteGuard = this.$router.beforeEach((to, from, next) => {
+  async beforeMount () {
+    this.fetched = false
+    const { result } = await this.$axios.$get('/Diary')
+
+    const items = [{
+      type: 'button',
+      color: 'red lighten-1'
+    }]
+
+    this.items.splice(0, this.items.length)
+    this.items.push(...items, ...result)
+
+    this.fetched = true
+
+    window.addEventListener('beforeunload', (event) => {
       if (this.dialogs.addItem === true) {
         this.dialogs.addItem = false
-        next(false)
-      } else {
-        next()
+        event.returnValue = undefined
       }
     })
-
-    this.$once('hook:destroyed', backButtonRouteGuard)
+  },
+  beforeDestroy () {
+    window.removeEventListener('beforeunload', () => {})
+  },
+  beforeRouteLeave (to, before, next) {
+    if (this.dialogs.addItem === true) {
+      this.dialogs.addItem = false
+      next(false)
+    } else {
+      next()
+    }
   },
   methods: {
     async submitItem ({ title, description, startAt, color }) {
