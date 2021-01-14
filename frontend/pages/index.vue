@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     startApp () {
-      this.$router.push('/Diary')
+      this.$router.replace('/Diary')
     }
   }
 }

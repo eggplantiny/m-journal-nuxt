@@ -2,9 +2,9 @@
   <v-navigation-drawer
     v-model="model"
     color="indigo lighten-1"
-    app
     dark
     hide-overlay
+    fixed
   >
     <template v-slot:append>
       Hello World
@@ -17,11 +17,15 @@
         @click="clickItem(item)"
       >
         <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
+          <v-icon>
+            {{ item.icon }}
+          </v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <v-list-item-title>
+            {{ item.title }}
+          </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -38,9 +42,8 @@
 
 <script>
 function close () {
-  window.open('', '_self', '')
+  self.opener = self
   window.close()
-  return false
 }
 
 export default {

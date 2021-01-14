@@ -1,6 +1,10 @@
 <template>
   <v-row justify="center">
-    <v-col cols="12" sm="12" class="py-0">
+    <v-col
+      cols="12"
+      sm="12"
+      class="py-0 diary-container"
+    >
       <vc-date-picker
         v-model="date"
         color="indigo"
@@ -9,7 +13,11 @@
         @update:from-page="updateCalendar"
       />
     </v-col>
-    <v-col cols="12" sm="12" class="py-0">
+    <v-col
+      cols="12"
+      sm="12"
+      class="py-0 diary-container"
+    >
       <v-timeline
         dense
         clipped
@@ -121,18 +129,17 @@ export default {
       ).sort((a, b) => moment(a.startAt).isBefore(b.startAt) ? 1 : -1)
     }
   },
-  beforeRouteLeave (to, from, next) {
-    if (this.dialogs.addItem === true) {
-      this.dialogs.addItem = false
-      return next(false)
-    }
+  created () {
+    const backButtonRouteGuard = this.$router.beforeEach((to, from, next) => {
+      if (this.dialogs.addItem === true) {
+        this.dialogs.addItem = false
+        next(false)
+      } else {
+        next()
+      }
+    })
 
-    if (Object.keys(this.$route.query).length !== 0) {
-      //  TODO 뒤로가기 관련 기능 개발 필요
-      next()
-    } else {
-      next(false)
-    }
+    this.$once('hook:destroyed', backButtonRouteGuard)
   },
   methods: {
     async submitItem ({ title, description, startAt, color }) {
@@ -193,13 +200,11 @@ export default {
     }
   },
   head () {
-    const title = `${this.userInfo.nickName} 님의 하루일기`
+    const userInfo = this.userInfo || { nickName: '아무개님' }
+    const title = `${userInfo.nickName} 님의 하루일기`
     return {
       title
     }
-  },
-  mounted () {
-    console.log(this.$metaInfo.title)
   }
 }
 </script>
@@ -211,5 +216,9 @@ export default {
 
 ::v-deep .timepicker {
   border-radius: 4px;
+}
+
+.diary-container {
+  width: 100%;
 }
 </style>

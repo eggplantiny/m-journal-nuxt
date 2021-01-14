@@ -8,7 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/components/organisms/DrawerMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/organisms/DrawerMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/store/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/store/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/a/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/a/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/a/SignUp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/a/SignUp.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +115,10 @@
       <workItem from="1609934507408" duration="932000" />
       <workItem from="1610107523939" duration="815000" />
       <workItem from="1610171289828" duration="7321000" />
-      <workItem from="1610368044293" duration="5703000" />
+      <workItem from="1610368044293" duration="7755000" />
+      <workItem from="1610412979531" duration="3192000" />
+      <workItem from="1610532399261" duration="1687000" />
+      <workItem from="1610618838938" duration="5926000" />
     </task>
     <servers />
   </component>
