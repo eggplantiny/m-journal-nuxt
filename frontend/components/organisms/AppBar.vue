@@ -8,6 +8,7 @@
   >
     <div class="app-bar">
       <v-app-bar-nav-icon
+        v-if="userInfo"
         @click="openDialog"
       />
       <span class="app-bar-title">
