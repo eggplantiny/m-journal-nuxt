@@ -48,13 +48,27 @@ export default {
     async signUp () {
       const { nickName } = this
       const dark = false
+      const detail = false
       const color = '#e3f6f5'
 
       if (nickName.length < 2) {
         return this.$dialog.notify.error('닉네임은 2글자 이상 입력해주세요 😊')
       }
 
-      const { uid } = await this.$axios.post('/auth/SignUp', { nickName, dark, color }).then(({ data }) => data.result)
+      let uid
+      try {
+        const res = await this.$axios.$post('/auth/SignUp', { nickName })
+        uid = res.result.uid
+      } catch (e) {
+        return this.$dialog.notify.error(e)
+      }
+
+      try {
+        await this.$axios.$put('/setting', { dark, color, nickName, detail })
+      } catch (e) {
+        return this.$dialog.notify.error(e)
+      }
+
       this.$dialog.notify.success(`반갑습니다 ${nickName} 님 😀`).then(() => {})
       return this.$router.replace(`/Diary/${uid}`)
     }
