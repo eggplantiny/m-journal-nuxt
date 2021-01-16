@@ -64,7 +64,7 @@ export default {
       }
 
       try {
-        await this.$axios.$put('/setting', { dark, color, nickName, detail })
+        await this.$store.dispatch('setting/update', { dark, color, nickName, detail })
       } catch (e) {
         return this.$dialog.notify.error(e)
       }

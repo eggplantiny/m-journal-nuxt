@@ -9,7 +9,7 @@
     <v-card flat rounded>
       <v-toolbar
         dark
-        color="primary"
+        :color="color"
       >
         <v-btn
           icon
@@ -93,7 +93,7 @@
                 </v-select>
                 <b-timepicker
                   v-model="input.startAt"
-                  class="mt-4"
+                  class="mt-4 mb-10"
                   placeholder="몇시에 하셨나요?"
                 />
               </v-expansion-panel-content>
@@ -111,6 +111,7 @@ import { model } from '~/mixins'
 export default {
   name: 'AddItemDialog',
   mixins: [model],
+  props: ['color'],
   data () {
     return {
       colors: [

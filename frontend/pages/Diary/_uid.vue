@@ -64,6 +64,7 @@
     <add-item-dialog
       ref="addItemDialog"
       v-model="dialogs.addItem"
+      :color="color"
       @submit="submitItem"
     />
   </v-row>
@@ -93,6 +94,9 @@ export default {
     }
   },
   computed: {
+    color () {
+      return this.$store.getters['setting/color']
+    },
     userInfo () {
       return this.$store.getters['auth/user'] || { nickName: '아무개님' }
     },

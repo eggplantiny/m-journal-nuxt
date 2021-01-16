@@ -10,15 +10,41 @@
         sm="12"
         class="py-0"
       >
-        <v-text-field
-          v-model="inputs.nickName"
-          label="닉네임"
-          outlined
-          solo
-          flat
-          hide-details="auto"
-          :rules="rules.required"
-        />
+        <v-row no-gutters align="center">
+          <v-col cols="3">
+            <div class="text-center">
+              닉네임
+            </div>
+          </v-col>
+          <v-col cols="9">
+            <v-text-field
+              v-model="inputs.nickName"
+              label="닉네임"
+              outlined
+              solo
+              flat
+              hide-details="auto"
+              :rules="rules.required"
+            />
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col
+        cols="12"
+        sm="12"
+      >
+        <v-row no-gutters align="center">
+          <v-col cols="3">
+            <div class="text-center">
+              테마 색상
+            </div>
+          </v-col>
+          <v-col cols="9">
+            <color-picker-menu
+              v-model="inputs.color"
+            />
+          </v-col>
+        </v-row>
       </v-col>
       <v-col
         cols="12"
@@ -29,6 +55,7 @@
           v-model="inputs.detail"
           label="일기 자세히보기"
           hide-details="auto"
+          :color="color"
         />
       </v-col>
       <v-col
@@ -40,6 +67,7 @@
           v-model="inputs.dark"
           label="다크모드"
           hide-details="auto"
+          :color="color"
         />
       </v-col>
     </v-form>
@@ -49,7 +77,7 @@
         block
         dark
         large
-        color="indigo lighten-2"
+        :color="color"
         @click="submit"
       >
         저장
@@ -64,8 +92,10 @@
 </template>
 
 <script>
+import ColorPickerMenu from '~/components/molecules/Setting/ColorPickerMenu'
 export default {
   name: 'Setting',
+  components: { ColorPickerMenu },
   layout: 'app',
   middleware: ['auth'],
   data () {
@@ -83,31 +113,19 @@ export default {
       }
     }
   },
-  async beforeMount () {
+  computed: {
+    color () {
+      return this.$store.getters['setting/color']
+    }
+  },
+  beforeMount () {
     const userInfo = this.$store.getters['auth/user']
     const { nickName } = userInfo
 
-    let setting = {
-      dark: false,
-      detail: false,
-      color: '#e3f6f5'
-    }
-
-    try {
-      const res = await this.$axios.$get('/setting')
-
-      if (res) {
-        setting = res.result
-      }
-    } catch (e) {
-      this.$dialog.notify.error(e)
-      this.$router.go(-1)
-    }
-
     this.inputs.nickName = nickName
-    this.inputs.dark = setting.dark
-    this.inputs.detail = setting.detail
-    this.inputs.color = setting.color
+    this.inputs.dark = this.$store.getters['setting/dark']
+    this.inputs.detail = this.$store.getters['setting/detail']
+    this.inputs.color = this.$store.getters['setting/color']
   },
   methods: {
     async submit () {
@@ -120,9 +138,7 @@ export default {
       const { nickName, dark, detail, color } = this.inputs
 
       try {
-        await this.$axios.$put('/setting', {
-          nickName, dark, detail, color
-        })
+        await this.$store.dispatch('setting/update', { nickName, dark, detail, color })
         await this.$store.dispatch('auth/fetchUser')
       } catch (e) {
         return this.$dialog.notify.error(e)
