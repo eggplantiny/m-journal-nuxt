@@ -1,10 +1,10 @@
 <template>
   <v-app-bar
+    :color="color"
     app
     dark
     elevate-on-scroll
     elevation="0"
-    color="indigo lighten-1"
   >
     <div class="app-bar">
       <v-app-bar-nav-icon
@@ -29,6 +29,18 @@ export default {
   computed: {
     userInfo () {
       return this.$store.getters['auth/user'] || null
+    },
+    color () {
+      return this.$store.getters['setting/color']
+    }
+  },
+  watch: {
+    color: {
+      handler (color) {
+        const metaThemeColor = document.querySelector('meta[name=theme-color]')
+        metaThemeColor.setAttribute('content', color)
+      },
+      immediate: true
     }
   },
   methods: {

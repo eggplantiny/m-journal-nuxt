@@ -22,7 +22,10 @@ export default async function ({ $axios, $fire, $fireAuthStore, store, redirect 
   $axios.setToken(idToken, 'Bearer')
 
   const { exists } = await store.dispatch('auth/fetchUser')
+
   if (!exists) {
     return redirect('/a/SignUp')
   }
+
+  await store.dispatch('setting/fetch')
 }

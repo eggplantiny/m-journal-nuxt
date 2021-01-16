@@ -50,6 +50,7 @@ export default {
 
         if (exists) {
           const { uid } = userInfo
+          await this.$store.dispatch('setting/fetch')
           await this.$router.replace(`/Diary/${uid}`)
         } else {
           return this.$router.push('/a/SignUp')

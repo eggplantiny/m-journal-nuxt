@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer
     v-model="model"
-    color="indigo lighten-1"
+    :color="color"
     dark
     hide-overlay
     fixed
@@ -63,6 +63,9 @@ export default {
           this.$store.dispatch('drawer/close')
         }
       }
+    },
+    color () {
+      return this.$store.getters['setting/color']
     }
   },
   methods: {
