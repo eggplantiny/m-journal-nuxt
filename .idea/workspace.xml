@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/functions/express/models/setting.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/express/routes/setting.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/pages/Setting/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Setting/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/express/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions/express/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -114,7 +119,9 @@
       <workItem from="1610412979531" duration="3192000" />
       <workItem from="1610532399261" duration="1687000" />
       <workItem from="1610618838938" duration="9948000" />
-      <workItem from="1610698668238" duration="2061000" />
+      <workItem from="1610698668238" duration="2167000" />
+      <workItem from="1610709305578" duration="189000" />
+      <workItem from="1610793301985" duration="4966000" />
     </task>
     <servers />
   </component>

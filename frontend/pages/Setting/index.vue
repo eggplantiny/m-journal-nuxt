@@ -103,7 +103,7 @@ export default {
       const { nickName, dark, detail, color } = this.inputs
 
       try {
-        await this.$axios.$put('/settings', {
+        await this.$axios.$put('/setting', {
           nickName, dark, detail, color
         })
       } catch (e) {
