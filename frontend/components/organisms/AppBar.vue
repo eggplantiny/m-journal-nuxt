@@ -34,15 +34,6 @@ export default {
       return this.$store.getters['setting/color']
     }
   },
-  watch: {
-    color: {
-      handler (color) {
-        const metaThemeColor = document.querySelector('meta[name=theme-color]')
-        metaThemeColor.setAttribute('content', color)
-      },
-      immediate: true
-    }
-  },
   methods: {
     openDialog () {
       this.$store.dispatch('drawer/open')

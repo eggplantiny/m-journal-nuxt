@@ -13,7 +13,7 @@
         </v-card-title>
         <v-card-actions>
           <v-btn
-            color="primary"
+            :color="color"
             large
             block
             outlined
@@ -33,6 +33,12 @@
 <script>
 export default {
   name: 'Login',
+  layout: 'app',
+  computed: {
+    color () {
+      return this.$store.getters['setting/color']
+    }
+  },
   methods: {
     async loginWithGoogle () {
       //  구글 로그인 시도

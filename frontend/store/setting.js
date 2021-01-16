@@ -1,8 +1,8 @@
 export const state = () => {
   return {
     dark: false,
-    detail: false,
-    color: '#e3f6f5'
+    detail: true,
+    color: '#a793e5'
   }
 }
 
