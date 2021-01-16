@@ -26,10 +26,12 @@
           <v-card-title>
             {{ item.title }}
           </v-card-title>
-          <v-card-subtitle class="py-0">
+          <v-card-subtitle>
             {{ formatTime(item.startAt) }}
           </v-card-subtitle>
-          <v-card-text>
+          <v-card-text
+            v-if="detail === true"
+          >
             {{ item.description }}
           </v-card-text>
         </v-col>
@@ -37,6 +39,11 @@
           <v-fade-transition>
             <v-card-actions v-show="hover">
               <v-spacer />
+              <v-btn icon dark @click="toggleDetail">
+                <v-icon>
+                  {{ detail ? 'mdi-chevron-down' : 'mdi-chevron-up' }}
+                </v-icon>
+              </v-btn>
               <v-btn icon dark @click="deleteItem">
                 <v-icon>
                   mdi-delete
@@ -65,12 +72,24 @@ export default {
       default: null
     }
   },
+  data () {
+    return {
+      detail: true
+    }
+  },
+  beforeMount () {
+    const detail = this.$store.getters['setting/detail']
+    this.detail = detail === true
+  },
   methods: {
     addItem () {
       this.$emit('add')
     },
     deleteItem () {
       this.$emit('delete')
+    },
+    toggleDetail () {
+      this.detail = !this.detail
     },
     formatTime (value) {
       return moment(value).format('HH시 mm분')

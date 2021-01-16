@@ -111,7 +111,12 @@ import { model } from '~/mixins'
 export default {
   name: 'AddItemDialog',
   mixins: [model],
-  props: ['color'],
+  props: {
+    color: {
+      type: String,
+      default: '#112233'
+    }
+  },
   data () {
     return {
       colors: [

@@ -5,7 +5,7 @@
         outlined
         x-large
         block
-        color="indigo lighten-1"
+        :color="color"
         @click="startApp"
       >
         시작하기
@@ -20,6 +20,11 @@ export default {
   layout: 'app',
   data () {
     return {
+    }
+  },
+  computed: {
+    color () {
+      return this.$store.getters['setting/color']
     }
   },
   methods: {

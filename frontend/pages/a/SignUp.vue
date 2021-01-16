@@ -48,7 +48,7 @@ export default {
     async signUp () {
       const { nickName } = this
       const dark = false
-      const detail = false
+      const detail = true
       const color = '#e3f6f5'
 
       if (nickName.length < 2) {
