@@ -22,7 +22,7 @@
     </template>
     <template v-else>
       <v-row no-gutters>
-        <v-col cols="10">
+        <v-col cols="12">
           <v-card-title>
             {{ item.title }}
           </v-card-title>
@@ -35,16 +35,25 @@
             {{ item.description }}
           </v-card-text>
         </v-col>
-        <v-col cols="2" align-self="end">
+        <v-col cols="12" align-self="end">
           <v-fade-transition>
             <v-card-actions v-show="hover">
               <v-spacer />
-              <v-btn icon dark @click="toggleDetail">
+              <v-btn
+                v-if="showDetailButton"
+                icon
+                dark
+                @click="toggleDetail"
+              >
                 <v-icon>
-                  {{ detail ? 'mdi-chevron-down' : 'mdi-chevron-up' }}
+                  {{ detail ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
                 </v-icon>
               </v-btn>
-              <v-btn icon dark @click="deleteItem">
+              <v-btn
+                icon
+                dark
+                @click="deleteItem"
+              >
                 <v-icon>
                   mdi-delete
                 </v-icon>
@@ -77,9 +86,17 @@ export default {
       detail: true
     }
   },
+  computed: {
+    showDetailButton () {
+      if (!this.item.description) {
+        return false
+      }
+      return this.item.description.length > 0
+    }
+  },
   beforeMount () {
     const detail = this.$store.getters['setting/detail']
-    this.detail = detail === true
+    this.detail = (detail === true)
   },
   methods: {
     addItem () {
