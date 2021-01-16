@@ -83,14 +83,31 @@ export default {
       }
     }
   },
-  beforeMount () {
+  async beforeMount () {
     const userInfo = this.$store.getters['auth/user']
-    const { dark, nickName, detail, color } = userInfo
+    const { nickName } = userInfo
+
+    let setting = {
+      dark: false,
+      detail: false,
+      color: '#e3f6f5'
+    }
+
+    try {
+      const res = await this.$axios.$get('/setting')
+
+      if (res) {
+        setting = res.result
+      }
+    } catch (e) {
+      this.$dialog.notify.error(e)
+      this.$router.go(-1)
+    }
 
     this.inputs.nickName = nickName
-    this.inputs.dark = dark === true
-    this.inputs.detail = detail === true
-    this.inputs.color = color
+    this.inputs.dark = setting.dark
+    this.inputs.detail = setting.detail
+    this.inputs.color = setting.color
   },
   methods: {
     async submit () {
@@ -103,13 +120,15 @@ export default {
       const { nickName, dark, detail, color } = this.inputs
 
       try {
-        await this.$axios.$put('/settings', {
+        await this.$axios.$put('/setting', {
           nickName, dark, detail, color
         })
+        await this.$store.dispatch('auth/fetchUser')
       } catch (e) {
         return this.$dialog.notify.error(e)
       }
 
+      this.$dialog.notify.success('설정이 정상적으로 저장되었습니다 😉')
       this.$router.go(-1)
     }
   }

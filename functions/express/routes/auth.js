@@ -11,21 +11,13 @@ router.post('/SignUp',
   [validateFirebaseIdToken],
   async (req, res) => {
     const user = req.user
-    const { nickName, color, dark } = req.body
+    const { nickName, color, dark, detail } = req.body
 
     if (nickName === undefined) {
       return response.errorHandler.needParameter(res, 'nickName')
     }
 
-    if (color === undefined) {
-      return response.errorHandler.needParameter(res, 'color')
-    }
-
-    if (dark === undefined) {
-      return response.errorHandler.needParameter(res, 'dark')
-    }
-
-    const uid = await User.addUser(user, nickName, color, dark)
+    const uid = await User.addUser(user, nickName)
     return response.success(res, { uid })
   })
 
