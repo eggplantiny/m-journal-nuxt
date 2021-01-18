@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/plugins/composition-api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/vue-shim.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/molecules/Diary/DiaryItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/molecules/Diary/DiaryItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/jsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/middleware/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/middleware/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +67,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.tslint" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
     <property name="vuejs.nuxt.types-notification-shown" value="true" />
@@ -118,7 +127,9 @@
       <workItem from="1610709305578" duration="189000" />
       <workItem from="1610793301985" duration="6049000" />
       <workItem from="1610804121986" duration="668000" />
-      <workItem from="1610807586794" duration="6137000" />
+      <workItem from="1610807586794" duration="6919000" />
+      <workItem from="1610872717890" duration="266000" />
+      <workItem from="1610971798495" duration="4175000" />
     </task>
     <servers />
   </component>
@@ -163,5 +174,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

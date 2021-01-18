@@ -33,7 +33,8 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/v-calendar.js'
+    '@/plugins/v-calendar.js',
+    '@/plugins/composition-api'
     // '@/plugins/buefy.js'
   ],
 
@@ -45,7 +46,9 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    //  https://typescript.nuxtjs.org/guide/setup
+    '@nuxt/typescript-build'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -148,5 +151,13 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  typescript: {
+    typeCheck: {
+      eslint: {
+        files: './**/*.{ts,js,vue}'
+      }
+    }
   }
 }

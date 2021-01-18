@@ -15,6 +15,7 @@ export default async function ({ $axios, $fire, $fireAuthStore, store, redirect 
 
   //  token 이 없다면 firebase login 후 토큰 등록
   const idToken = await fireUser.getIdToken()
+
   if (!idToken) {
     return redirect('/a/Login')
   }
