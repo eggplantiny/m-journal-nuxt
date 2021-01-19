@@ -14,25 +14,28 @@
   </v-row>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+
+import { defineComponent, computed, useContext } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   name: 'Root',
   layout: 'app',
-  data () {
+  setup () {
+    const { store, redirect } = useContext()
+    const color = computed(() => store.getters['setting/color'])
+
+    const startApp = () => {
+      redirect('/Diary')
+    }
+
     return {
-    }
-  },
-  computed: {
-    color () {
-      return this.$store.getters['setting/color']
-    }
-  },
-  methods: {
-    startApp () {
-      this.$router.replace('/Diary')
+      color,
+      startApp
     }
   }
-}
+})
+
 </script>
 <style scoped lang="scss">
 </style>

@@ -147,7 +147,7 @@ export default {
   beforeDestroy () {
     window.removeEventListener('beforeunload', () => {})
   },
-  beforeRouteLeave (to, before, next) {
+  beforeRouteLeave (_to, _before, next) {
     if (this.dialogs.addItem === true) {
       this.dialogs.addItem = false
       next(false)
