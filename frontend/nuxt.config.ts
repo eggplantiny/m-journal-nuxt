@@ -1,4 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
 
 const nodeEnv = process.env.NODE_ENV
 require('dotenv').config({
@@ -33,9 +32,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/v-calendar.js',
-    '@/plugins/composition-api'
-    // '@/plugins/buefy.js'
+    '@/plugins/v-calendar.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -48,7 +45,10 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     //  https://typescript.nuxtjs.org/guide/setup
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    //  https://composition-api.nuxtjs.org/getting-started/setup
+    '@nuxtjs/composition-api'
+
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -115,23 +115,7 @@ export default {
     treeShake: true,
     customVariables: [
       '~/assets/variables.scss'
-    ],
-    theme: {
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        },
-        light: {
-          primary: colors.indigo.lighten1
-        }
-      }
-    }
+    ]
   },
 
   vuetifyDialog: {
@@ -151,13 +135,5 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-  },
-
-  typescript: {
-    typeCheck: {
-      eslint: {
-        files: './**/*.{ts,js,vue}'
-      }
-    }
   }
 }

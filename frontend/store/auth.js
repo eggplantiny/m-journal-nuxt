@@ -6,7 +6,7 @@ export const state = () => {
 }
 
 export const mutations = {
-  ON_AUTH_STATE_CHANGED_MUTATION (state, { authUser, claims }) {
+  ON_AUTH_STATE_CHANGED_MUTATION (state, { authUser }) {
     if (!authUser) {
       state.fireUser = null
       return
@@ -21,7 +21,7 @@ export const mutations = {
 }
 
 export const actions = {
-  onAuthStateChangedAction (context, { authUser, claims }) {
+  onAuthStateChangedAction (_context, { authUser }) {
     if (!authUser) {
       // claims = null
       // perform logout operations
