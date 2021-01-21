@@ -1,3 +1,5 @@
+import * as cors from 'cors'
+import * as express from 'express'
 const cors = require('cors')
 const express = require('express')
 const cookieParser = require('cookie-parser')()
@@ -26,4 +28,5 @@ function generateApp () {
   return app
 }
 
-module.exports = generateApp
+export default
+

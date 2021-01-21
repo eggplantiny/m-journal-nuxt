@@ -5,28 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c2a595-9729-4974-a542-37ca2fffb6d4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/store/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/types/index.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.babelrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/jest.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/middleware/diary.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/middleware/diary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/_uid.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/plugins/composition-api.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/store/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/store/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintrc.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pages/Diary/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pages/Diary/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/store/dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/store/dialog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="EditorConfigPreviewManager">
+    <editorConfig file="$PROJECT_DIR$/frontend/.editorconfig" previewFile="$PROJECT_DIR$/frontend/types/index.d.ts" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -67,7 +67,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.linters.eslint" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
     <property name="vuejs.nuxt.types-notification-shown" value="true" />
@@ -131,12 +131,19 @@
       <workItem from="1610872717890" duration="266000" />
       <workItem from="1610971798495" duration="5480000" />
       <workItem from="1611059752483" duration="478000" />
-      <workItem from="1611060266793" duration="1222000" />
+      <workItem from="1611060266793" duration="4356000" />
+      <workItem from="1611146981083" duration="15000" />
+      <workItem from="1611147022977" duration="2347000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/frontend/store/auth.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

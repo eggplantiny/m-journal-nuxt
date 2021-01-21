@@ -1,4 +1,4 @@
-const fm = require('../../firebaseModule')
+const fm = require('../../../firebaseModule')
 
 const collection = fm.store.collection('users')
 
