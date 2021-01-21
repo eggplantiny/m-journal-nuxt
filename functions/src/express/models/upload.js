@@ -1,4 +1,4 @@
-const { bucket } = require('../../firebaseModule')
+const { bucket } = require('../../../firebaseModule')
 
 async function uploadFile (buffer, fileKey, path, mimeType, root = 'image') {
   const file = bucket.file(`${root}/${path}/${fileKey}`)
